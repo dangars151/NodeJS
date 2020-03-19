@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/signin.css">
+</head>
+<body style="background-color: rgb(76, 68, 68);">
+    <div id="sign-in">
+        <div style="padding: 10px 15px;" class="modal-content">
+            <a href="/" class="close" style="position:absolute; right: 12px; top: -3px;">&times;</a>
+            <form method="POST" action="/login">
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <% if(typeof(data) != "undefined") {%>
+                    <span style="color: red; font-size: 16px;"> <%= data %> </span>
+                <% } %>
+                
+                <a href="#" style="display: block; margin-bottom: 10px; color: black; font-size: 18px;">Quên mật khẩu?</a>
+                <button type="submit" style="width: 100%; background-color: rgb(9, 212, 248);">Đăng nhập</button>
+            </form>
+            <p>Bạn <b>chưa</b> có tài khoản? <a href="/signup">Tạo tài khoản</a></p>
+            <p>Hoặc đăng nhập với</p>
+            <div style="display: inline-block;">
+                <button style="width: 47%; background-color: blue;"><span>f </span>Facebook</button>
+                <button style="width: 47%; background-color: red; margin-left: 20px;"><span>G </span>Google</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

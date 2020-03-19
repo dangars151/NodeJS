@@ -1,0 +1,34 @@
+.introduce-website {
+    position: absolute; 
+    top: 100px; 
+    width: 60%; 
+    font-size: 40px;
+}
+
+#search-normal {
+    justify-content: space-between; 
+    margin: 10px 20px;
+}
+
+#search-normal input {
+    border: 1px solid black; 
+    text-indent: 14px;
+}
+
+#search {
+    position:absolute; 
+    width: 65%; 
+    background: white; 
+    top: 350px; 
+    height: 100px;
+}
+
+.carousel-item img {
+    width: 1348px !important;
+    margin-left: -119px;
+    height: 600px;
+}
+
+#sign-in {
+    display: none;
+}

@@ -1,0 +1,13 @@
+<div id="sign-in" style="position:fixed; top: 20%; left: 33%;" class="">
+        <input type="text" name="" id="email" placeholder="Email" style="width: 100%;">
+        <input type="password" name="" id="password" placeholder="Mật khẩu" style="width: 100%;">
+        <a href="#" style="display: block; margin-bottom: 10px; color: black; font-size: 18px;">Quên mật khẩu?</a>
+        <button style="width: 100%; background-color: rgb(9, 212, 248);">Đăng nhập</button>
+        <p>Bạn chưa có tài khoản? <a href="#">Tạo tài khoản</a></p>
+        <p>Hoặc đăng nhập với</p>
+        <button style="width: 47%; float: left; background-color: blue;"><span>f </span>Facebook</button>
+        <button style="width: 47%; float: right; background-color: red;"><span>G </span>Google</button>
+    </div>
+
+
+    position:fixed; top: 20%; left: 33%;
