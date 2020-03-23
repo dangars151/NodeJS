@@ -1,0 +1,9 @@
+#create-job {
+    border: 1px solid rgb(168, 159, 159);
+    margin: 40px 10px;
+    padding: 25px;
+}
+
+.title {
+    width: 250px;
+}

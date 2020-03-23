@@ -1,0 +1,15 @@
+#my-company {
+    border: 1px solid rgb(168, 159, 159);
+    margin: 70px 30px;
+    padding: 25px;
+}
+
+#my-company img {
+    width: 250px;
+    border: 4px solid rgba(107, 121, 124, 0.2);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+}

@@ -1,20 +1,20 @@
 <div class="carousel slide" data-ride="carousel" data-interval="5000">
     <div class="carousel-item active">
         <img src="public/images/slide1.jpg" class="d-block w-100">
-        <p class="introduce-website">Bạn vẫn đang loay hoay để tìm kiếm công việc phù hợp với mình?</p>
+        <p class="introduce-website">Nền tảng tìm kiếm việc làm <b>hàng đầu</b></p>
     </div>
-    <div class="carousel-item">
+    <!-- <div class="carousel-item">
         <img src="public/images/slide2.jpg" class="d-block w-100">
         <p class="introduce-website">Bạn đang đăng job tuyển người, nhưng vẫn chưa tìm thấy ứng viên phù hợp?</p>
     </div>
     <div class="carousel-item">
         <img src="public/images/slide3.jpg" class="d-block w-100">
         <p style="width: 80%; top: 70px; " class="introduce-website">Hãy đến với Jobstart, sứ mệnh của chúng tôi là mang những ứng viên tiềm năng và những công ty lại với nhau</p>
-    </div>
+    </div> -->
     <div id="search">
         <form id="search-normal" class="form-inline">
             <div class="form-group mb-2">
-                <input type="text" class="form-control-plaintext" placeholder="eg. ">
+                <input type="text" class="form-control-plaintext" placeholder="eg. Lập trình viên">
             </div>
             <select class="form-control" style="border: 1px solid black; margin-top: -9px;">
                 <option>Ngành nghề</option>
@@ -24,5 +24,55 @@
             </div>
             <button type="submit" class="btn btn-primary mb-2">Tìm kiếm</button>
         </form>
+        <div class="search-advance" data-toggle="modal" data-target="#exampleModal">
+            <i class="fas fa-search"></i>Tìm kiếm nâng cao
+        </div>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                <div class="modal-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="title">Tiêu đề</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="e.g Lập trình viên">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">Địa chỉ</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Hà Nội">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">Lương từ</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">Lương đến</td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">Ngày hết hạn</td>
+                            <td>
+                                <input type="date" class="form-control" placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-primary">Tạo việc làm</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+      </div>
 </div>

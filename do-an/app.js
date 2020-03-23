@@ -15,4 +15,4 @@ app.set("view engine", "ejs");
 var path = require('path');
 app.use('/public', express.static(path.join(__dirname + '/public')));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`))

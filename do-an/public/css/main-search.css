@@ -1,8 +1,8 @@
 .introduce-website {
     position: absolute; 
-    top: 100px; 
-    width: 60%; 
-    font-size: 40px;
+    top: 50px; 
+    width: 55%; 
+    font-size: 48px;
 }
 
 #search-normal {
@@ -19,16 +19,25 @@
     position:absolute; 
     width: 65%; 
     background: white; 
-    top: 350px; 
+    top: 250px; 
     height: 100px;
 }
 
 .carousel-item img {
     width: 1348px !important;
     margin-left: -119px;
-    height: 600px;
+    height: 400px;
 }
 
 #sign-in {
     display: none;
+}
+
+.search-advance {
+    margin-left: 552px;
+    display: inline-block;
+}
+
+.title {
+    width: 111px;
 }

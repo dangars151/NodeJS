@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/my-company.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div id="my-company">
+            <div class="row">
+                <div class="col-4">
+                    <img src="../public/images/default-company.png" alt="">
+                </div>
+                <div class="col-8">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <h2>HBLab Joint Stock Company</h2>
+                            </tr>
+                            <tr>
+                                <td class="title">Tên:</td>
+                                <td>HBLab Joint Stock Company</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Website:</td>
+                                <td>hblab.vn</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Mail:</td>
+                                <td>hblab@gmail.com</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <b>Về công ty</b>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illo optio voluptatem, alias ad assumenda mollitia! Ipsa explicabo unde eaque vel eligendi aliquid nesciunt doloremque minima. Voluptatibus laudantium omnis aperiam?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+#job {
+    margin-top: 465px;
+    margin-bottom: 30px;
+}
+
+.card-header {
+    background: rgb(63, 59, 59);
+    color: white;
+}
+
+.job {
+    border: 1px solid rgb(211, 203, 203);
+    margin-bottom: 10px;
+}
+
+.job img{
+    width: 60px;
+    margin-left: -15px;
+}
+
+.job b {
+    position: absolute;
+    top: 0px;
+    margin-left: 10px;
+}
+
+.job .company {
+    position: absolute;
+    top: 20px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.job .salary {
+    position: absolute;
+    top: 40px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.job .location {
+    position: absolute;
+    top: 40px;
+    left: 215px;
+    font-size: 15px;
+}
+
+.job .salary i {
+    color: rgb(124, 124, 245);
+}
+
+.job .location i {
+    color: rgb(124, 124, 245);
+}

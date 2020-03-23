@@ -4,7 +4,7 @@
     <ul class="navbar-nav">
         <% if (data.role == 'client') {%>
             <li class="nav-item">
-                <a class="nav-link" href="#">Trang chủ</a>
+                <a class="nav-link" href="/">Trang chủ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Tìm việc ngay</a>
@@ -17,26 +17,26 @@
             </li>
         <%} else if(data.role == 'company_user') {%>
             <li class="nav-item">
-                <a class="nav-link" href="#">Trang chủ</a>
+                <a class="nav-link" href="/">Trang chủ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tìm việc ngay</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Công ty của tôi</a>
+                <a class="nav-link" href="/my-company">Công ty của tôi</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Quản lí việc</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tạo việc làm</a>
+                <a class="nav-link" href="/create-job">Tạo việc làm</a>
             </li>
             <li class="nav-item">
-                <img src="public/images/default-image.png" style="width: 38px; height: 38px;border-radius: 50%; border: 1px solid #dee2e6;">
+                <a class="nav-link" href="#">Đăng xuất</a>
+            </li>
+            <li class="nav-item">
+                <a href="/"><img class="avatar" src="public/images/default-image.png"></a>
             </li>
         <%} else if(data.role == 'candidate_user') {%>
             <li class="nav-item">
-                <a class="nav-link" href="#">Trang chủ</a>
+                <a class="nav-link" href="/">Trang chủ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Loại công việc</a>
@@ -45,7 +45,10 @@
                 <a class="nav-link" href="#">Tìm việc ngay</a>
             </li>
             <li class="nav-item">
-                <img src="public/images/default-image.png" style="width: 38px; height: 38px;border-radius: 50%; border: 1px solid #dee2e6;">
+                <a class="nav-link" href="#">Đăng xuất</a>
+            </li>
+            <li class="nav-item">
+                <a href="/"><img class="avatar" src="public/images/default-image.png"></a>
             </li>
         <%}%>
     </ul>

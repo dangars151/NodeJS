@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo việc làm</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/create-job.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div id="create-job">
+            <table class="table table-borderless">
+                <tr>
+                    <td class="title">Tiêu đề</td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="e.g Lập trình viên">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">Địa chỉ</td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="Hà Nội">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">Mô tả</td>
+                    <td>
+                        <textarea class="form-control" rows="2" placeholder="Quyền lợi làm việc..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">Lương từ</td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">Lương đến</td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">Ngày hết hạn</td>
+                    <td>
+                        <input type="date" class="form-control" placeholder="">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-primary">Tạo việc làm</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

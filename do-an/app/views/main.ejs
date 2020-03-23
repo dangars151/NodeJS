@@ -8,12 +8,18 @@
     <%- include('./head') %>
 
     <link rel="stylesheet" href="public/css/main-search.css">
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/job.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
 </head>
 <body>
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
 
         <%- include('./main-search.ejs') %>
+        
+        <%- include('./job.ejs', { jobs: jobs }) %>
     </div>
+    <%- include('./footer.ejs') %>
 </body>
 </html>
