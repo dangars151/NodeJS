@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm việc</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/find-job.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div id="search">
+            <form class="form-inline" action="find-job" method="POST">
+                <div class="form-group mb-2 search-normal">
+                    <input name="title" type="text" class="form-control" placeholder="eg. Lập trình viên">
+                </div>
+                <select class="form-control search-normal" name="name">
+                    <option value="">Ngành nghề</option>
+                    <% for(var i=0; i<titles.length; i++) {%>
+                        <option value="<%= titles[i] %>"><%= titles[i] %></option>
+                    <%}%>
+                </select>
+                <div class="form-group mb-2 search-normal">
+                    <input name='location' type="text" class="form-control" placeholder="Location">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2 search-normal">Tìm kiếm</button>
+            </form>
+            <div class="search-advance" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-search"></i>Tìm kiếm nâng cao
+            </div>
+        </div>
+    
+        <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                    <div class="modal-body">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="title">Tiêu đề</td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="e.g Lập trình viên">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">Địa chỉ</td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Hà Nội">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">Lương từ</td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">Lương đến</td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">Ngày hết hạn</td>
+                                <td>
+                                    <input type="date" class="form-control" placeholder="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-primary">Tạo việc làm</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">VIỆC LÀM</div>
+            <div class="card-body">
+                <div class="row">
+                    <% for(var i=0; i<jobs.length; i++) {%>
+                        <div class="col-4 job">
+                            <img src="public/images/default-company.png" alt="">
+                            <b><%= jobs[i].title %></b>
+                            <span class="company"><%= jobs[i].company.name %></span>
+                            <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].company.location %></span>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

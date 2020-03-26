@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/my-company.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
 </head>
 <body>
     <div class="container">
@@ -20,35 +21,77 @@
                     <img src="../public/images/default-company.png" alt="">
                 </div>
                 <div class="col-8">
-                    <div>
-                        <table class="table">
-                            <tr>
-                                <h2>HBLab Joint Stock Company</h2>
-                            </tr>
-                            <tr>
-                                <td class="title">Tên:</td>
-                                <td>HBLab Joint Stock Company</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Website:</td>
-                                <td>hblab.vn</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Mail:</td>
-                                <td>hblab@gmail.com</td>
-                            </tr>
-                        </table>
-                    </div>
+                    <table class="table">
+                        <tr>
+                            <h2><%= data.company.name %></h2>
+                        </tr>
+                        <tr>
+                            <td class="title">Tên:</td>
+                            <td><%= data.company.name %></td>
+                        </tr>
+                        <tr>
+                            <td class="title">Website:</td>
+                            <td><%= data.company.website %></td>
+                        </tr>
+                        <tr>
+                            <td class="title">Mail:</td>
+                            <td><%= data.company.email %></td>
+                        </tr>
+                    </table>
+                    <i class="fas fa-pencil-alt" data-toggle="modal" data-target="#exampleModal"></i>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-12">
                     <b>Về công ty</b>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illo optio voluptatem, alias ad assumenda mollitia! Ipsa explicabo unde eaque vel eligendi aliquid nesciunt doloremque minima. Voluptatibus laudantium omnis aperiam?</p>
+                    <p><%= data.company.description %></p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                <div class="modal-body">
+                    <form action="/update-company" method="POST">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>Tên</td>
+                                <td>
+                                    <input name="name" type="text" class="form-control" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Website</td>
+                                <td>
+                                    <input name="website" type="text" class="form-control" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    <input name="email" type="text" class="form-control" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mô tả</td>
+                                <td>
+                                    <textarea name="description" class="form-control" rows="2"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Sửa</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
 </body>
 </html>

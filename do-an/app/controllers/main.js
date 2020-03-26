@@ -6,7 +6,11 @@ var job = require('../models/Job');
 
 router.get('/', function(req, res) {
     job.find().then(function(data){
-        res.render('main', { jobs: data });
+        if (req.session.user) {
+            return res.render('main', { jobs: data, data: req.session.user });
+        } else {
+            return res.render('main', { jobs: data });
+        }
     })
 });
 

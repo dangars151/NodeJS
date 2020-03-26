@@ -7,10 +7,10 @@
                 <a class="nav-link" href="/">Trang chủ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tìm việc ngay</a>
+                <a class="nav-link" href="/find-job">Tìm việc ngay</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tạo việc làm</a>
+                <a class="nav-link" href="/create-job">Tạo việc làm</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/login">Đăng nhập</a>
@@ -29,10 +29,14 @@
                 <a class="nav-link" href="/create-job">Tạo việc làm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Đăng xuất</a>
+                <a class="nav-link" href="/signout">Đăng xuất</a>
             </li>
             <li class="nav-item">
-                <a href="/"><img class="avatar" src="public/images/default-image.png"></a>
+                <% if(data.image == null) {%>
+                <a href="/"><img class="avatar" src="public/images/default-company.png"></a>
+                <%} else {%>
+                <a href="/"><img class="avatar" src="<%= data.image %>"></a>
+                <% } %>
             </li>
         <%} else if(data.role == 'candidate_user') {%>
             <li class="nav-item">
@@ -42,13 +46,17 @@
                 <a class="nav-link" href="#">Loại công việc</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tìm việc ngay</a>
+                <a class="nav-link" href="/find-job">Tìm việc ngay</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Đăng xuất</a>
+                <a class="nav-link" href="/signout">Đăng xuất</a>
             </li>
             <li class="nav-item">
+                <% if(data.image == null) {%>
                 <a href="/"><img class="avatar" src="public/images/default-image.png"></a>
+                <%} else {%>
+                <a href="/"><img class="avatar" src="<%= data.image %>"></a>
+                <% } %>
             </li>
         <%}%>
     </ul>

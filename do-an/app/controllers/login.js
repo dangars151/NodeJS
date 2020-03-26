@@ -18,6 +18,7 @@ router.post('/', function(req, res) {
         if (data == null) {
             return res.render('signin', {data: 'Mật khẩu hoặc tên đăng nhập không đúng!'});
         }
+        req.session.user = data;
         return res.render('main', {data: data, jobs: jobs});
     })
 });

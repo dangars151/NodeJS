@@ -12,15 +12,18 @@
         <p style="width: 80%; top: 70px; " class="introduce-website">Hãy đến với Jobstart, sứ mệnh của chúng tôi là mang những ứng viên tiềm năng và những công ty lại với nhau</p>
     </div> -->
     <div id="search">
-        <form id="search-normal" class="form-inline">
+        <form id="search-normal" class="form-inline" action="find-job" method="POST">
             <div class="form-group mb-2">
-                <input type="text" class="form-control-plaintext" placeholder="eg. Lập trình viên">
+                <input name="title" type="text" class="form-control-plaintext" placeholder="eg. Lập trình viên">
             </div>
-            <select class="form-control" style="border: 1px solid black; margin-top: -9px;">
-                <option>Ngành nghề</option>
+            <select name="name" class="form-control" style="border: 1px solid black; margin-top: -9px;">
+                <option value="">Ngành nghề</option>
+                <% for(var i=0; i<jobs.length; i++) {%>
+                    <option value="<%= jobs[i].title %>"><%= jobs[i].title %></option>
+                <%}%>
             </select>
             <div class="form-group mb-2">
-                <input type="text" class="form-control-plaintext" placeholder="Location">
+                <input name="location" type="text" class="form-control-plaintext" placeholder="Location">
             </div>
             <button type="submit" class="btn btn-primary mb-2">Tìm kiếm</button>
         </form>

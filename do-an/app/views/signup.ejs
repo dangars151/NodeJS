@@ -6,6 +6,26 @@
     <title>Đăng kí</title>
 
     <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="public/css/upload.css">
+
+    <style>
+        #candidate {
+            position: relative;
+        }
+
+        #company {
+            position: relative;
+        }
+        
+        .fas {
+            position: absolute;
+            left: 200px;
+            top: 20px;
+        }
+    </style>
 </head>
 <body style="background: rgb(76, 68, 68);">
     <div id="signup" style="border: 1px solid black; display: inline-block; width: 300px; background: white; margin: 7% 0% 0% 38%;">
@@ -14,8 +34,20 @@
             <button onclick="companyClicked()" class="btn btn-primary">Cho công ty</button>
         </div>
         <div id="candidate" class="container">
-            <img src="public/images/default-image.png" alt="" style="border-radius: 50%; border: 1px solid #dee2e6; margin: 9px 15px">
-            <form action="/signup" method="POST">
+            
+            <!-- <img src="public/images/default-image.png" alt="" style="border-radius: 50%; border: 1px solid #dee2e6; margin: 9px 15px"> -->
+            <i class="fas fa-pencil-alt"></i>
+            <form action="/signup" method="POST" enctype="multipart/form-data">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input name='imgCandidate' type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview" style="background-image: url(public/images/default-image.png);">
+                        </div>
+                    </div>
+                </div>
                 <input name="emailCandidate" type="email" placeholder="Email" style="width: 100%; margin:7px 0px;" required>
                 <input name="passwordCandidate" type="password" placeholder="Password" style="width: 100%; margin: 7px 0px;" required>
                 <input name="fullname" type="text" placeholder="Fullname" style="width: 100%; margin: 7px 0px;" required>
@@ -23,8 +55,19 @@
             </form>
         </div>
         <div id="company" style="display: none;" class="container">
-            <img src="public/images/default-company.png" alt="" style="border-radius: 50%; border: 1px solid #dee2e6; margin: 9px 15px; width: 225px;">
-            <form action="/signup" method="POST">
+            <!-- <img src="public/images/default-company.png" alt="" style="border-radius: 50%; border: 1px solid #dee2e6; margin: 9px 15px; width: 225px;"> -->
+            <i class="fas fa-pencil-alt"></i>
+            <form action="/signup" method="POST" enctype="multipart/form-data">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input name='imgCompany' type='file' id="imageUpload2" accept=".png, .jpg, .jpeg"/>
+                        <label for="imageUpload2"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview2" style="background-image: url(public/images/default-company.png);">
+                        </div>
+                    </div>
+                </div>
                 <input name="emailCompany" type="email" placeholder="Email" style="width: 100%; margin:7px 0px;" required>
                 <input name="passwordCompany" type="password" placeholder="Password" style="width: 100%; margin: 7px 0px;" required>
                 <input name="company" type="text" placeholder="Company" style="width: 100%; margin: 7px 0px;" required>
@@ -46,5 +89,34 @@
             candidate.style.display = "none";
             company.style.display = "block";
         }
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview2').css('background-image', 'url('+e.target.result +')');
+                    $('#imagePreview2').hide();
+                    $('#imagePreview2').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imageUpload").change(function() {
+            readURL(this);
+        });
+        $("#imageUpload2").change(function() {
+            readURL2(this);
+        });
     </script>
 </html>

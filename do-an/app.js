@@ -1,10 +1,19 @@
-const express = require('express')
-const app = express()
-const port = 3000
-var bodyParser = require('body-parser')
+const express = require('express');
+const app = express();
+const port = 3000;
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: true} ));
+
+app.set('trust proxy', 1);
+app.use(session({
+    secret: '123456',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
 
 var route = require(__dirname + "/app/controllers/route.js");
 app.use(route);

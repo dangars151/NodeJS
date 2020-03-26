@@ -19,15 +19,19 @@ var UserSchema = mongoose.Schema({
         name: String,
         website: String,
         description: String,
-        image: String
+        image: String,
+        email: String
     }
 })
 
 var UserModel = mongoose.model("user", UserSchema);
-// UserModel.create([
-//     {email: "dang", password: "1", role: "admin"},
-//     {email: "dang", password: "2", role: "company_user", company: {name: "abc"}},
-//     {email: "dang", password: "3", role: "candidate_user"}
-//     ]).then
+//UserModel.create([
+    // {email: "dang", password: "1", role: "admin"},
+    //{email: "dang", password: "2", role: "company_user", company: {name: "abc"}},
+    // {email: "dang", password: "3", role: "candidate_user"}
+    //{email: "dang", password: "4", role: "candidate_user", image: 'link'}
+    // {email: "dang@gmail.com", password: "1", role: "company_user", 
+    // company: {name: "ABC", website: "abc.vn", email: "abc@gmail.com", description: 'Công ty phát triển phần mềm chuyên nghiệp'}}
+    //]).then
 
 module.exports = UserModel;
