@@ -23,6 +23,12 @@ router.post('/', function(req, res) {
        
 
     if (typeof(fields.emailCandidate) != 'undefined') {
+        // user.findOne({email: fields.emailCandidate}).then(function(data){
+        //     if (data != null) {
+        //         return res.render('signup', { error: 'Email đã tồn tại. Vui lòng chọn email khác!' } );
+        //     }
+        // })
+
         var oldpath = files.imgCandidate.path;
         var newpath = 'public/images/' + files.imgCandidate.name;
         fs.rename(oldpath, newpath, function (err) {
@@ -37,7 +43,8 @@ router.post('/', function(req, res) {
         }).then(function(data){
             req.session.user = data;
             return res.render('main', { data: data, jobs: jobs } );
-    })} else {
+    })
+    } else {
         var oldpath = files.imgCompany.path;
         var newpath = 'public/images/' + files.imgCompany.name;
         fs.rename(oldpath, newpath, function (err) {

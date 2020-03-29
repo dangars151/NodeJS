@@ -51,6 +51,9 @@
                 <input name="emailCandidate" type="email" placeholder="Email" style="width: 100%; margin:7px 0px;" required>
                 <input name="passwordCandidate" type="password" placeholder="Password" style="width: 100%; margin: 7px 0px;" required>
                 <input name="fullname" type="text" placeholder="Fullname" style="width: 100%; margin: 7px 0px;" required>
+                <% if(typeof(error) != "undefined") {%>
+                    <span style="color: red; font-size: 16px;"> <%= error %> </span>
+                <% } %>
                 <button type="submit" style="width: 100%; margin: 7px 0px;" class="btn btn-primary">Đăng kí</button>
             </form>
         </div>

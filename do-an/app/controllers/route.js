@@ -2,8 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 
-// router.get('/', function(req, res) {
-//     res.render('main');
+// router.get('/admin-menu', function(req, res) {
+//     res.render('admin-menu');
 // });
 
 router.use('/', require(__dirname + '/main'));
@@ -14,5 +14,10 @@ router.use('/my-company', require(__dirname + '/my-company'));
 router.use('/create-job', require(__dirname + '/create-job'));
 router.use('/find-job', require(__dirname + '/find-job'));
 router.use('/update-company', require(__dirname + '/update-company'));
+router.use('/manage-jobs', require(__dirname + '/manage-jobs'));
+router.use('/manage-main', require(__dirname + '/manage-main'));
+router.use('/manage-users', require(__dirname + '/manage-users'));
+router.use('/manage-companies', require(__dirname + '/manage-companies'));
+router.use('/jobs-of-company', require(__dirname + '/jobs-of-company'));
 
 module.exports = router;

@@ -14,7 +14,7 @@
         <div style="padding: 10px 15px;" class="modal-content">
             <a href="/" class="close" style="position:absolute; right: 12px; top: -3px;">&times;</a>
             <form method="POST" action="/login">
-                <input type="text" name="email" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Mật khẩu" required>
                 <% if(typeof(data) != "undefined") {%>
                     <span style="color: red; font-size: 16px;"> <%= data %> </span>

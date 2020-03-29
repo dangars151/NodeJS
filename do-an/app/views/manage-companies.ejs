@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/manage-companies.css">
+</head>
+<body>
+    <%- include('./menu') %>
+
+    <% for(var i=0; i<companies.length; i++) {%>
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-2 avatar">
+                    <% if(companies[i].image != null) {%>
+                        <img src="<%= companies[i].image %>" class="card-img">
+                    <%} else {%>
+                        <img src="public/images/default-company.png" class="card-img" style="border: 1px solid black;">
+                    <% } %>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= companies[i].name %></h5>
+                        <div class="infomation">
+                            <span>Website: <%= companies[i].website %></span>
+                            <span>Email: <%= companies[i].email %></span>
+                            <span>Địa chỉ: <%= companies[i].location %></span>
+                        </div>
+                        <p class="card-text"><%= companies[i].description %></p>
+                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                </div>
+                <div class="col-md-2 detail">
+                    <button class="btn btn-secondary">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>

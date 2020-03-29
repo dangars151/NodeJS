@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     var jobs;
-    job.find().then(function(data) {
+    job.find({ status: 1 }).then(function(data) {
         jobs = data;
     })
     user.findOne({email: req.body.email, password: req.body.password}).then(function(data){

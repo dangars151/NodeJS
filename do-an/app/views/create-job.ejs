@@ -16,48 +16,50 @@
 
         <div id="create-job">
             <table class="table table-borderless">
-                <tr>
-                    <td class="title">Tiêu đề</td>
-                    <td>
-                        <input type="text" class="form-control" placeholder="e.g Lập trình viên">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="title">Địa chỉ</td>
-                    <td>
-                        <input type="text" class="form-control" placeholder="Hà Nội">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="title">Mô tả</td>
-                    <td>
-                        <textarea class="form-control" rows="2" placeholder="Quyền lợi làm việc..."></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="title">Lương từ</td>
-                    <td>
-                        <input type="text" class="form-control" placeholder="">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="title">Lương đến</td>
-                    <td>
-                        <input type="text" class="form-control" placeholder="">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="title">Ngày hết hạn</td>
-                    <td>
-                        <input type="date" class="form-control" placeholder="">
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <button class="btn btn-primary">Tạo việc làm</button>
-                    </td>
-                </tr>
+                <form action="create-job" method="POST">
+                    <tr>
+                        <td class="title">Tiêu đề</td>
+                        <td>
+                            <input name="title" type="text" class="form-control" placeholder="e.g Lập trình viên" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Địa chỉ</td>
+                        <td>
+                            <input name="location" type="text" class="form-control" placeholder="Hà Nội" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Mô tả</td>
+                        <td>
+                            <textarea name="description" class="form-control" rows="2" placeholder="Quyền lợi làm việc..." required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Lương từ</td>
+                        <td>
+                            <input name="salaryFrom" type="number" class="form-control" placeholder="0" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Lương đến</td>
+                        <td>
+                            <input name="salaryTo" type="number" class="form-control" placeholder="0" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Ngày hết hạn</td>
+                        <td>
+                            <input name="outDate" type="date" class="form-control" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-primary" type="submit">Tạo việc làm</button>
+                        </td>
+                    </tr>
+                </form>
             </table>
         </div>
     </div>

@@ -1,0 +1,29 @@
+.card {
+    margin: 25px 20px;
+}
+
+.avatar img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+}
+
+.infomation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.infomation span {
+    font-size: 14px;
+}
+
+.detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

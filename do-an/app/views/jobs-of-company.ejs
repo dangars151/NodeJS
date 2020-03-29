@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/jobs-of-company.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>        
+    </div>
+
+    <div class="pt-2 pb-2 bg-light">
+        <div class="container justify-content-center pt-5 pb-5">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <span class="nav-link py-3 tab-label py-3 show active">Job posted</span>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link py-3 tab-label py-3">Job processing</span>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="row aos-init aos-animate" data-aos="fade">
+                    <div class="col-md-12">
+                        <%- include('./jobs-company-item') %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

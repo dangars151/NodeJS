@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+</head>
+<body>
+    <%- include('./menu') %>
+
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ngành nghề</th>
+            <th scope="col">Địa điểm</th>
+            <th scope="col">Công ty</th>
+            <th scope="col">Lương</th>
+            <th scope="col">Ngày hết hạn</th>
+            <th scope="col">Ngày tạo</th>
+            <th scope="col">Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<jobs.length; i++) {%>
+                <tr>
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= jobs[i].title %></td>
+                    <td><%= jobs[i].company.location %></td>
+                    <td><%= jobs[i].company.name %></td>
+                    <td><%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</td>
+                    <td><%= jobs[i].out_date.getMonth()+1 %>-<%= jobs[i].out_date.getDate() %>-<%= jobs[i].out_date.getFullYear() %></td>
+                    <td><%= jobs[i].created_at.getMonth()+1 %>-<%= jobs[i].created_at.getDate() %>-<%= jobs[i].created_at.getFullYear() %></td>
+                    <% if(jobs[i].status == 0) {%>
+                        <td>Mới</td>
+                    <%} else {%>
+                        <td>Được chấp nhận</td>
+                    <%}%>
+                </tr>
+            <% } %>
+        </tbody>
+      </table>
+</body>
+</html>
