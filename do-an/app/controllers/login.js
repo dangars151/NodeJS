@@ -2,6 +2,7 @@ var express = require("express");
 
 var user = require('../models/User');
 var job = require('../models/Job');
+var company = require('../models/Company');
 
 var router = express.Router();
 
@@ -11,12 +12,19 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     var jobs;
+    var fullJobs;
     job.find({ status: 1 }).then(function(data) {
         jobs = data;
+    })
+    job.find().then(function(data) {
+        fullJobs = data;
     })
     user.findOne({email: req.body.email, password: req.body.password}).then(function(data){
         if (data == null) {
             return res.render('signin', {data: 'Mật khẩu hoặc tên đăng nhập không đúng!'});
+        }
+        if (data.role == 'admin') {
+            return res.render('manage-main', {jobs: fullJobs});
         }
         req.session.user = data;
         return res.render('main', {data: data, jobs: jobs});

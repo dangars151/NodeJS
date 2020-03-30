@@ -9,11 +9,9 @@ var JobSchema = mongoose.Schema({
     created_at: Date,
     description: String,
     status: Number,
-    company: {
-        name: String,
-        image: String,
-        location: String
-    }
+    companyName: String,
+    companyLocation: String,
+    companyId: String
 })
 
 var JobModel = mongoose.model("job", JobSchema);

@@ -2,6 +2,7 @@ var express = require("express");
 
 var user = require('../models/User');
 var job = require('../models/Job');
+var company = require('../models/Company');
 
 var router = express.Router();
 
@@ -47,18 +48,27 @@ router.post('/', function(req, res) {
     } else {
         var oldpath = files.imgCompany.path;
         var newpath = 'public/images/' + files.imgCompany.name;
-        fs.rename(oldpath, newpath, function (err) {
-            
-        });
+        fs.rename(oldpath, newpath, function (err) {});
+
         user.create({
             email: fields.emailCompany, 
             password: fields.passwordCompany, 
             role: 'company_user',
-            image: newpath,
-            company: { name: fields.company, image: newpath },
+            image: newpath
         }).then(function(data){
             req.session.user = data;
-            return res.render('main', { data: data, jobs: jobs } );
+            return company.create({
+                name: fields.company, 
+                image: newpath,
+                usersId: data._id
+        }).then(function(data){
+            req.session.user.companyId = data._id;
+            return user.updateOne({ _id: req.session.user._id }, {
+                companyId: data._id
+            })         
+        }).then(function(data){
+            return res.render('main', { data: req.session.user, jobs: jobs } );
+        })
         })
     }
     });

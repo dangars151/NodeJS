@@ -18,24 +18,28 @@
         <div id="my-company">
             <div class="row">
                 <div class="col-4">
-                    <img src="../public/images/default-company.png" alt="">
+                    <img src="<%= company.image %>" alt="">
                 </div>
                 <div class="col-8">
                     <table class="table">
                         <tr>
-                            <h2><%= data.company.name %></h2>
+                            <h2><%= company.name %></h2>
                         </tr>
                         <tr>
                             <td class="title">Tên:</td>
-                            <td><%= data.company.name %></td>
+                            <td><%= company.name %></td>
                         </tr>
                         <tr>
                             <td class="title">Website:</td>
-                            <td><%= data.company.website %></td>
+                            <td><%= company.website %></td>
                         </tr>
                         <tr>
-                            <td class="title">Mail:</td>
-                            <td><%= data.company.email %></td>
+                            <td class="title">Email:</td>
+                            <td><%= company.email %></td>
+                        </tr>
+                        <tr>
+                            <td class="title">Địa chỉ:</td>
+                            <td><%= company.location %></td>
                         </tr>
                     </table>
                     <i class="fas fa-pencil-alt" data-toggle="modal" data-target="#exampleModal"></i>
@@ -45,7 +49,7 @@
             <div class="row">
                 <div class="col-12">
                     <b>Về công ty</b>
-                    <p><%= data.company.description %></p>
+                    <p><%= company.description %></p>
                 </div>
             </div>
         </div>
@@ -60,19 +64,25 @@
                             <tr>
                                 <td>Tên</td>
                                 <td>
-                                    <input name="name" type="text" class="form-control" required>
+                                    <input value="<%= company.name %>" name="name" type="text" class="form-control">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Website</td>
                                 <td>
-                                    <input name="website" type="text" class="form-control" required>
+                                    <input value="<%= company.website %>" name="website" type="text" class="form-control" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>
-                                    <input name="email" type="text" class="form-control" required>
+                                    <input value="<%= company.email %>" name="email" type="text" class="form-control" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Địa chỉ</td>
+                                <td>
+                                    <input value="<%= company.location %>" name="location" type="text" class="form-control" required>
                                 </td>
                             </tr>
                             <tr>

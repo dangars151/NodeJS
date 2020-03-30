@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 var job = require('../models/Job');
+var company = require('../models/Company');
 
 router.get('/', function(req, res) {
     if (req.session.user) {
@@ -14,8 +15,10 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     var request = req.body;
-    job.create([
-        {
+    var jobsId = [];
+    company.findOne({ _id: req.session.user.companyId }).then(function(data) {
+        jobsId = data.jobsId;
+        return job.create({
             title: request.title,
             salary_from: request.salaryFrom,
             salary_to: request.salaryTo,
@@ -23,13 +26,19 @@ router.post('/', function(req, res) {
             created_at: Date.now(),
             description: request.description,
             status: 0,
-            company: {
-                name: req.session.user.company.name,
-                location: request.location
-            }
-        }
-    ]).then(function(data) {
-        
+            companyId: data._id,
+            companyName: data.name,
+            companyLocation: data.location
+        })
+    }).then(function(data) {
+        jobsId.push(data._id);
+        return jobsId;
+    }).then(function(jobsId) {
+        company.updateOne({ _id: req.session.user.companyId }, {
+            jobsId: jobsId
+        }).then(function(data) {
+            
+        })
     })
 });
 

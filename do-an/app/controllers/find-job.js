@@ -31,7 +31,7 @@ router.post('/', function(req, res) {
         status: 1
     } ).then(function(data){
         data.forEach(function(item) {
-            if (item.company.location.includes(req.body.location)) jobs.push(item);
+            if (item.companyLocation.includes(req.body.location)) jobs.push(item);
         })
         if (req.session.user) {
             return res.render('find-job', { jobs: jobs, titles: titles, data: req.session.user });

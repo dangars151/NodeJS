@@ -33,8 +33,8 @@
                     <tr>
                         <th scope="row"><%= i+1 %></th>
                         <td><%= jobs[i].title %></td>
-                        <td><%= jobs[i].company.location %></td>
-                        <td><%= jobs[i].company.name %></td>
+                        <td><%= jobs[i].companyLocation %></td>
+                        <td><%= jobs[i].companyName %></td>
                         <td><%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</td>
                         <td><%= jobs[i].out_date.getMonth()+1 %>-<%= jobs[i].out_date.getDate() %>-<%= jobs[i].out_date.getFullYear() %></td>
                         <td><%= jobs[i].created_at.getMonth()+1 %>-<%= jobs[i].created_at.getDate() %>-<%= jobs[i].created_at.getFullYear() %></td>
