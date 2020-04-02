@@ -14,13 +14,32 @@
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
 
+        <% if(typeof(msg) != 'undefined') {%>
+            <h4 style="margin-left: 10px; color: red;"><%= msg %></h4>
+        <% } %>
         <div id="create-job">
             <table class="table table-borderless">
                 <form action="create-job" method="POST">
                     <tr>
                         <td class="title">Tiêu đề</td>
                         <td>
-                            <input name="title" type="text" class="form-control" placeholder="e.g Lập trình viên" required>
+                            <input name="title" type="text" class="form-control" placeholder="e.g Lập trình viên NodeJS(fresher)" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Tên</td>
+                        <td>
+                            <input name="name" type="text" class="form-control" placeholder="e.g Lập trình viên NodeJS" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Ngành nghề</td>
+                        <td>
+                            <select class="form-control" name="work">
+                                <% for(var i=0; i<works.length; i++) {%>
+                                    <option value="<%= works[i]._id %>"><%= works[i].name %></option>
+                                <%}%>
+                            </select>
                         </td>
                     </tr>
                     <tr>

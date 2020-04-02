@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+</head>
+<body>
+    <%- include('./menu') %>
+
+    <div style="margin-top: 25px; margin-bottom: 1px;">
+        <button class="btn btn-primary" onclick="jobClicked()">Công việc</button>
+        <button class="btn btn-primary" onclick="userClicked()">Thành viên</button>
+    </div>
+    <div id="job">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Công ty</th>
+                    <th scope="col">Ngành nghề</th>
+                    <th scope="col">Lương</th>
+                    <th scope="col">Ngày hết hạn</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<jobs.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%= i+1 %></th>
+                        <td><%= jobs[i].companyName %></td>
+                        <td><%= jobs[i].title %></td>
+                        <td><%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</td>
+                        <td><%= jobs[i].out_date.getDate() %>-<%= jobs[i].out_date.getMonth()+1 %>-<%= jobs[i].out_date.getFullYear() %></td>
+                        <td><%= jobs[i].description %></td>
+                        <% if(jobs[i].status == 0) {%>
+                            <td>Mới</td>
+                        <%} else {%>
+                            <td>Được chấp nhận</td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="user" style="display: none;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Công ty</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Họ tên</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<users.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%= i+1 %></th>
+                        <td><%= jobs[i].companyName %></td>
+                        <td><%= users[i].email %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    var job = document.getElementById('job');
+    var user = document.getElementById('user');
+    function jobClicked() {
+        user.style.display = 'none';
+        job.style.display = 'block';
+    }
+    function userClicked() {
+        user.style.display = 'block';
+        job.style.display = 'none';
+    }
+</script>
+</html>

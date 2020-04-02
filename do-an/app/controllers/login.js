@@ -3,6 +3,7 @@ var express = require("express");
 var user = require('../models/User');
 var job = require('../models/Job');
 var company = require('../models/Company');
+var work = require('../models/Work');
 
 var router = express.Router();
 
@@ -13,6 +14,12 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     var jobs;
     var fullJobs;
+    var works = [];
+    work.find().then(function(data) {
+        data.forEach(function(item) {
+            works.push(item);
+        })
+    })
     job.find({ status: 1 }).then(function(data) {
         jobs = data;
     })
@@ -27,7 +34,7 @@ router.post('/', function(req, res) {
             return res.render('manage-main', {jobs: fullJobs});
         }
         req.session.user = data;
-        return res.render('main', {data: data, jobs: jobs});
+        return res.render('main', {data: data, jobs: jobs, works: works});
     })
 });
 

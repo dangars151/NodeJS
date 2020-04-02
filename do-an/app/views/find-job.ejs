@@ -14,7 +14,6 @@
 <body>
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
-
         <div id="search">
             <form class="form-inline" action="find-job" method="POST">
                 <div class="form-group mb-2 search-normal">
@@ -23,13 +22,13 @@
                 <select class="form-control search-normal" name="name">
                     <option value="">Ngành nghề</option>
                     <% for(var i=0; i<titles.length; i++) {%>
-                        <option value="<%= titles[i] %>"><%= titles[i] %></option>
+                        <option value="<%= titles[i]._id %>"><%= titles[i].name %></option>
                     <%}%>
                 </select>
                 <div class="form-group mb-2 search-normal">
                     <input name='location' type="text" class="form-control" placeholder="Location">
                 </div>
-                <button type="submit" class="btn btn-primary mb-2 search-normal">Tìm kiếm</button>
+                <button type="submit" class="btn btn-primary mb-2 search-normal">Tìm việc ngay</button>
             </form>
             <div class="search-advance" data-toggle="modal" data-target="#exampleModal">
                 <i class="fas fa-search"></i>Tìm kiếm nâng cao
@@ -38,45 +37,47 @@
     
         <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+            <div class="modal-content">
                     <div class="modal-body">
                         <table class="table table-borderless">
-                            <tr>
-                                <td class="title">Tiêu đề</td>
-                                <td>
-                                    <input type="text" class="form-control" placeholder="e.g Lập trình viên">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">Địa chỉ</td>
-                                <td>
-                                    <input type="text" class="form-control" placeholder="Hà Nội">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">Lương từ</td>
-                                <td>
-                                    <input type="text" class="form-control" placeholder="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">Lương đến</td>
-                                <td>
-                                    <input type="text" class="form-control" placeholder="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">Ngày hết hạn</td>
-                                <td>
-                                    <input type="date" class="form-control" placeholder="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-primary">Tạo việc làm</button>
-                                </td>
-                            </tr>
+                            <form action="/find-job-advance" method="POST">
+                                <tr>
+                                    <td class="title">Tiêu đề</td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="e.g Lập trình viên" name="title">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="title">Địa chỉ</td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Hà Nội" name="location">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="title">Lương từ</td>
+                                    <td>
+                                        <input type="number" class="form-control" name="salaryFrom">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="title">Lương đến</td>
+                                    <td>
+                                        <input type="number" class="form-control" name="salaryTo">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="title">Ngày hết hạn</td>
+                                    <td>
+                                        <input type="date" class="form-control" name="outDate">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="btn btn-primary" type="submit">Tạo việc làm</button>
+                                    </td>
+                                </tr>
+                            </form>
                         </table>
                     </div>
                 </div>

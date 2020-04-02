@@ -1,6 +1,7 @@
 #search {
     border: 1px solid black;
     display: inline-block;
+    margin-bottom: 25px;
 }
 
 .search-normal {

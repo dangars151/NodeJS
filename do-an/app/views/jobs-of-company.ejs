@@ -20,20 +20,43 @@
         <div class="container justify-content-center pt-5 pb-5">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <span class="nav-link py-3 tab-label py-3 show active">Job posted</span>
+                    <!-- <span class="nav-link py-3 tab-label py-3 show active">Job được chấp nhận</span> -->
+                    <button class="btn btn-primary" onclick="jobAcceptedClicked()">Job được chấp nhận</button>
                 </li>
                 <li class="nav-item">
-                    <span class="nav-link py-3 tab-label py-3">Job processing</span>
+                    <!-- <span class="nav-link py-3 tab-label py-3">Job đang xử lí</span> -->
+                    <button class="btn btn-primary" onclick="jobProcessingClicked()">Job đang xử lí</button>
                 </li>
             </ul>
-            <div class="tab-content">
+            <div class="tab-content" id="job-accepted">
                 <div class="row aos-init aos-animate" data-aos="fade">
                     <div class="col-md-12">
-                        <%- include('./jobs-company-item') %>
+                        <%- include('./jobs-company-item', { jobs: jobAccepted }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="job-processing">
+                <div class="row aos-init aos-animate" data-aos="fade">
+                    <div class="col-md-12">
+                        <%- include('./jobs-company-item', { jobs: jobProcessing }) %>
                     </div>
                 </div>
             </div>
         </div>
     </div>    
 </body>
+<script>
+    var jobAccepted = document.getElementById('job-accepted');
+    var jobProcessing = document.getElementById('job-processing');
+
+    function jobAcceptedClicked() {
+        jobAccepted.style.display = "block";
+        jobProcessing.style.display = "none";
+    }
+        
+    function jobProcessingClicked() {
+        jobAccepted.style.display = "none";
+        jobProcessing.style.display = "block";
+    }
+</script>
 </html>

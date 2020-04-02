@@ -19,5 +19,7 @@ router.use('/manage-main', require(__dirname + '/manage-main'));
 router.use('/manage-users', require(__dirname + '/manage-users'));
 router.use('/manage-companies', require(__dirname + '/manage-companies'));
 router.use('/jobs-of-company', require(__dirname + '/jobs-of-company'));
+router.use('/manage-company-detail', require(__dirname + '/manage-company-detail'));
+router.use('/find-job-advance', require(__dirname + '/find-job-advance'));
 
 module.exports = router;

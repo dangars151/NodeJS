@@ -6,10 +6,24 @@
     <title>Document</title>
 
     <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/manage-main.css">
 </head>
 <body>
     <%- include('./menu') %>
 
+    <form class="form-inline" id="form" action="/manage-main" method="POST">
+        <input type="text" class="form-control search" placeholder="Ngành nghề" name="title">
+        <input type="text" class="form-control search" placeholder="Địa điểm" name="location">
+        <input type="text" class="form-control search" placeholder="Công ty" name="company">
+        <select class="form-control search" name="status">
+            <option value="">Trạng thái</option>
+            <option value="1">Được chấp nhận</option>
+            <option value="0">Mới</option>
+        </select>
+        <button class="btn btn-primary search" type="submit">Tìm kiếm</button>
+    </form>
+    
     <table class="table">
         <thead class="thead-light">
           <tr>
@@ -31,8 +45,8 @@
                     <td><%= jobs[i].companyLocation %></td>
                     <td><%= jobs[i].companyName %></td>
                     <td><%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</td>
-                    <td><%= jobs[i].out_date.getMonth()+1 %>-<%= jobs[i].out_date.getDate() %>-<%= jobs[i].out_date.getFullYear() %></td>
-                    <td><%= jobs[i].created_at.getMonth()+1 %>-<%= jobs[i].created_at.getDate() %>-<%= jobs[i].created_at.getFullYear() %></td>
+                    <td><%= jobs[i].out_date.getDate() %>-<%= jobs[i].out_date.getMonth()+1 %>-<%= jobs[i].out_date.getFullYear() %></td>
+                    <td><%= jobs[i].created_at.getDate() %>-<%= jobs[i].created_at.getMonth()+1 %>-<%= jobs[i].created_at.getFullYear() %></td>
                     <% if(jobs[i].status == 0) {%>
                         <td>Mới</td>
                     <%} else {%>
@@ -41,6 +55,6 @@
                 </tr>
             <% } %>
         </tbody>
-      </table>
+    </table>
 </body>
 </html>
