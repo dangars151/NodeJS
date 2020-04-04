@@ -50,12 +50,11 @@
         .item .location i {
             color: blue;
         }
-        .item a {
+        .item button {
             position: absolute;
-            left: 465px;
-            top: 32px;
-            color: red; 
-            text-decoration: none;
+            left: 445px;
+            top: 30px;
+            color: red;
         }
     </style>
 </head>
@@ -69,12 +68,18 @@
                     <div class="row aos-init aos-animate job" data-aos="fade">
                         <% for(var i=0; i<jobs.length; i++) {%>
                             <div class="col-md-6 item">
-                                <img src="public/images/default-company.png" alt="">
+                                <img src="../public/images/default-company.png" alt="">
                                 <b><%= jobs[i].title %></b>
                                 <span class="company"><%= jobs[i].companyName %></span>
                                 <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
-                                <a href="/cancel-save-job/<%=jobs[i]._id%>"><i class="fas fa-trash-alt"></i> Bỏ lưu</a>
+                                <!-- <a href="/cancel-save-job/<%=jobs[i]._id%>"><i class="fas fa-trash-alt"></i> Bỏ lưu</a> -->
+                                <form action="/cancel-save-job" method="POST">
+                                    <input type="hidden" value="<%=jobs[i]._id%>" name="jobId">
+                                    <button class="btn">
+                                        <i class="fas fa-trash-alt"></i> Bỏ lưu
+                                    </button>
+                                </form>
                             </div>
                         <% } %>
                     </div>
