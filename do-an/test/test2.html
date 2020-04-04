@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="demo" value="1">Click me1.</button>
+    <button class="demo" value="2">Click me2.</button>
+</body>
+
+<script>
+    var demo = document.getElementsByClassName("demo");
+    
+    for (let i = 0; i< demo.length; i++) {
+        demo[i].onclick = function(){
+            demo[i].innerHTML = "YOU CLICKED ME!";
+            console.log(demo[i].value);
+        }
+    }
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+    }
+</script>
+</html>

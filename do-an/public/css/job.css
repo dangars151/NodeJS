@@ -52,3 +52,8 @@
 .job .location i {
     color: rgb(124, 124, 245);
 }
+
+.job a {
+    text-decoration: none;
+    color: black;
+}

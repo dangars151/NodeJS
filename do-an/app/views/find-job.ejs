@@ -6,10 +6,17 @@
     <title>Tìm việc</title>
 
     <%- include('./head') %>
+    
 
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/find-job.css">
     <link rel="stylesheet" href="public/fontawesome/css/all.css">
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -84,7 +91,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header">VIỆC LÀM</div>
             <div class="card-body">
                 <div class="row">
@@ -99,7 +106,54 @@
                     <% } %>
                 </div>
             </div>
+        </div> -->
+        <div class="pt-2 pb-2 bg-light">
+            <!-- <% if(typeof(msg) != 'undefined') {%>
+                <span><%= msg %></span>
+            <% } %> -->
+            <div class="container justify-content-center pt-5 pb-5" style="padding-top: 1rem !important;">
+                <div class="tab-content">      
+                    <div class="row aos-init aos-animate job" data-aos="fade">
+                        <% for(var i=0; i<jobs.length; i++) {%>
+                            <div class="col-md-6 item">
+                                <img src="public/images/default-company.png" alt="">
+                                <a href="/job-detail/<%=jobs[i].id%>" class="title-item"><b><%= jobs[i].title %></b></a>
+                                <span class="company"><%= jobs[i].companyName %></span>
+                                <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
+                                <!-- <% if(typeof(data) == 'undefined') {%>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Đăng nhập để lưu">
+                                        Lưu việc
+                                    </a>
+                                <% } else if(data.role == 'candidate_user') {%>
+                                    <a href="/save-job">Lưu việc</a> -->
+                                    <!-- <button value="<%=jobs[i].title%>" class="save">Lưu việc</button> -->
+                                <!-- <% } %> -->
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+<!-- <script>
+    var save = document.getElementsByClassName("save");
+    
+    for (let i = 0; i< save.length; i++) {
+        save[i].onclick = function(){
+            $.ajax({
+                url: '/save-job',
+                type: 'get',
+                data: {
+                    jobId: save[i].value
+                }
+            }).then(function(data) {
+                alert(data);
+            })
+        }
+    }
+</script> -->
+
 </html>

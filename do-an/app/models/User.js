@@ -15,7 +15,8 @@ var UserSchema = mongoose.Schema({
     fullname: String,
     image: String,
     description: String,
-    companyId: String
+    companyId: String,
+    jobsId: [String]
 })
 
 var UserModel = mongoose.model("user", UserSchema);

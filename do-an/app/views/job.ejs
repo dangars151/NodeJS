@@ -6,7 +6,8 @@
                 <% for(var i=0; i<jobs.length; i++) {%>
                     <div class="col-4 job">
                         <img src="public/images/default-company.png" alt="">
-                        <b><%= jobs[i].title %></b>
+                        <a href="/job-detail/<%=jobs[i].id%>" class="detail"><b><%= jobs[i].title %></b></a>
+                        <!-- <a href="/job-detail"><b><%= jobs[i].title %></b></a> -->
                         <span class="company"><%= jobs[i].companyName %></span>
                         <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                         <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
@@ -16,3 +17,5 @@
         </div>
     </div>
 </div>
+
+<!-- <script src="/public/js/job.js"></script> -->

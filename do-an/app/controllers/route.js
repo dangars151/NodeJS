@@ -1,7 +1,7 @@
 var express = require("express");
 
 var router = express.Router();
-
+//var path = require('path');
 // router.get('/admin-menu', function(req, res) {
 //     res.render('admin-menu');
 // });
@@ -21,5 +21,9 @@ router.use('/manage-companies', require(__dirname + '/manage-companies'));
 router.use('/jobs-of-company', require(__dirname + '/jobs-of-company'));
 router.use('/manage-company-detail', require(__dirname + '/manage-company-detail'));
 router.use('/find-job-advance', require(__dirname + '/find-job-advance'));
+router.use('/save-job', require(__dirname + '/save-job'));
+router.use('/save-job-list', require(__dirname + '/save-job-list'));
+router.use('/job-detail', require(__dirname + '/job-detail'));
+router.use('/cancel-save-job', require(__dirname + '/cancel-save-job'));
 
 module.exports = router;

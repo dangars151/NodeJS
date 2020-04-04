@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+
+    <style>
+        .job img {
+            width: 100px;
+        }
+        .item {
+            background: white;
+            margin-bottom: 5px;
+        }
+        .item:hover, .item:focus {
+            -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+            top: -4px;
+            z-index: 2;
+        }
+        .item b {
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .item .company {
+            position: absolute;
+            top: 30px;
+            margin-left: 10px;
+        }
+        .item .salary {
+            position: absolute;
+            top: 60px;
+            left: 320px;
+        }
+        .item .salary i {
+            color: blue;
+        }
+        .item .location {
+            position: absolute;
+            top: 60px;
+            margin-left: 10px;
+        }
+        .item .location i {
+            color: blue;
+        }
+        .item a {
+            position: absolute;
+            left: 465px;
+            top: 32px;
+            color: red; 
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div class="pt-2 pb-2 bg-light">
+            <div class="container justify-content-center pt-5 pb-5" style="padding: 15px !important;">
+                <div class="tab-content">
+                    <div class="row aos-init aos-animate job" data-aos="fade">
+                        <% for(var i=0; i<jobs.length; i++) {%>
+                            <div class="col-md-6 item">
+                                <img src="public/images/default-company.png" alt="">
+                                <b><%= jobs[i].title %></b>
+                                <span class="company"><%= jobs[i].companyName %></span>
+                                <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
+                                <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
+                                <a href="/cancel-save-job/<%=jobs[i]._id%>"><i class="fas fa-trash-alt"></i> Bỏ lưu</a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
