@@ -1,4 +1,5 @@
 const express = require('express');
+// var socketio = require('socket.io')
 const app = express();
 const port = 3000;
 var bodyParser = require('body-parser');
@@ -26,4 +27,6 @@ app.set("view engine", "ejs");
 //var path = require('path');
 app.use('/public', express.static(path.join(__dirname + '/public')));
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`));
+
+// var io = socketio(server);

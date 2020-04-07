@@ -39,6 +39,11 @@
     left: 920px;
     top: 45px;
 }
+.job #apply1 {
+    position: absolute;
+    left: 920px;
+    top: 45px;
+}
 
 .job #save {
     background: rgba(0,0,0,.05);

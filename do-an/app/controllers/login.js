@@ -4,6 +4,7 @@ var user = require('../models/User');
 var job = require('../models/Job');
 var company = require('../models/Company');
 var work = require('../models/Work');
+var notification = require('../models/Notification');
 
 var router = express.Router();
 
@@ -33,8 +34,19 @@ router.post('/', function(req, res) {
         if (data.role == 'admin') {
             return res.render('manage-main', {jobs: fullJobs});
         }
-        req.session.user = data;
-        return res.render('main', {data: data, jobs: jobs, works: works});
+        if (data.role == 'company_user') {
+            notification.find({
+                company_id: data.companyId,
+                is_read: 0
+            }).then(notifications => {
+                data.notifications = notifications;
+                req.session.user = data;
+                return res.render('main', {data: data, jobs: jobs, works: works});
+            })
+        } else {
+            req.session.user = data;
+            return res.render('main', {data: data, jobs: jobs, works: works});
+        }
     })
 });
 
