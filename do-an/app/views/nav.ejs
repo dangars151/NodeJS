@@ -29,18 +29,22 @@
                 <a class="nav-link" href="/create-job">Tạo việc làm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/signout">Đăng xuất</a>
+                <a class="nav-link" href="/signout" id="signout">Đăng xuất</a>
             </li>
             <li class="nav-item" style="position: relative;">
-                <a href="#" id="notificationLink"><i class="fas fa-bell fa-2x"></i></a>
-                <% if (typeof(data.notifications) != 'undefined' && data.notifications.length >0) {%>
-                    <span id="notification_count"><%=data.notifications.length%></span>
+                <a href="#" id="notificationLink" value='<%=data.companyId%>'><i class="fas fa-bell fa-2x"></i></a>
+                <% if (typeof(data.countNotificationsIsNotRead) != 'undefined' && data.countNotificationsIsNotRead >0) {%>
+                    <span id="notification_count"><%=data.countNotificationsIsNotRead%></span>
                 <%} else {%>
                     <span id="notification_count" style="display: none;"><%=0%></span>
                 <% } %>
                 <div id="notificationContainer">
                     <div id="notificationsBody" class="notifications">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo possimus molestiae eligendi nostrum maiores soluta facere tempora cupiditate vel consequatur provident quia nam, molestias voluptatum a quidem, repellat amet quae?
+                        <% if(typeof(data.notifications) != 'undefined') { %>
+                            <%for(let i=0; i< data.notifications.length; i++) {%>
+                                <div><%= data.notifications[i].title %></div>
+                            <% } %>
+                        <% } %>
                     </div>
                     <div id="notificationFooter"><a href="#" style="text-decoration: none;">See All</a></div>
                 </div>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#notificationLink").click(function(){
         $("#notificationContainer").fadeToggle(300);
-        $("#notification_count").fadeOut("slow");
+        //$("#notification_count").fadeOut("slow");
         return false;
     });
     $(document).click(function(){
