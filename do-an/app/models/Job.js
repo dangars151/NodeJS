@@ -13,7 +13,8 @@ var JobSchema = mongoose.Schema({
     companyName: String,
     companyLocation: String,
     companyId: String,
-    workId: String
+    workId: String,
+    cvs: [Object]
 })
 
 var JobModel = mongoose.model("job", JobSchema);

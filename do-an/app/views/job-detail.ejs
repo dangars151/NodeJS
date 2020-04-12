@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="../public/css/job-detail.css">
     <link rel="stylesheet" href="../public/css/nav.css">
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
@@ -73,16 +74,17 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="">
+                    <form action="/apply-cv" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">       
                             <div class="form-group">
                                 <label for="exampleFormControlFile1"><b>Tải CV lên</b></label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" name="cv" class="form-control-file" id="exampleFormControlFile1" accept=".doc, .docx,.ppt, .pptx,.pdf">
                             </div>
-                            <div class="form-group">
+                            <input type="hidden" value="<%=job._id%>" name="jobId">
+                            <!-- <div class="form-group">
                                 <label for="message-text" class="col-form-label"><b>Giới thiệu bản thân</b></label>
                                 <textarea class="form-control" id="message-text" placeholder="Giới thiệu ngắn gọn về bản thân( thông tin cơ bản, kinh nghiệm làm việc, điểm mạnh, điểm yếu ...)"></textarea>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Nộp CV</button>

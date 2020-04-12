@@ -26,7 +26,46 @@
             </div>
         </div>
         <div class="ml-auto">
-            <button class="btn btn-primary py-2 ml-2">Xem chi tiết</button>
+            <button value="<%=jobs[i]._id%>" class="detail btn btn-primary py-2 ml-2" data-toggle="modal" data-target="#exampleModal<%=jobs[i]._id%>">
+                Xem chi tiết
+            </button>
+        </div>
+    </div>
+    
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+    <div class="modal fade" id="exampleModal<%=jobs[i]._id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 605px; margin-left: -25px;">
+                <div class="modal-body">
+                    <table class="table" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">CV</th>
+                                <th scope="col">Trạng thái</th>
+                                <th scope="col">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let j=0; j<jobs[i].cvs.length; j++) {%>
+                                <tr>
+                                    <th scope="row"><%=j+1%></th>
+                                    <td><a href="<%= jobs[i].cvs[j].file %>">Xem chi tiết</a></td>
+                                    <td>test</td>
+                                    <td>
+                                        <form action="/accept-cv" method="POST">
+                                            <input type="hidden" name="userId" value="<%=jobs[i].cvs[j].user_id%>">
+                                            <input type="hidden" name="jobId" value="<%=jobs[i]._id%>">
+                                            <button class="btn btn-primary">Chấp nhận</button>
+                                        </form>
+                                        <button class="btn btn-danger">Từ chối</button>
+                                    </td>
+                                </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 <% } %>

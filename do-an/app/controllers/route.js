@@ -26,5 +26,7 @@ router.use('/save-job-list', require(__dirname + '/save-job-list'));
 router.use('/job-detail', require(__dirname + '/job-detail'));
 router.use('/cancel-save-job', require(__dirname + '/cancel-save-job'));
 router.use('/handle-notification', require(__dirname + '/handle-notification'));
+router.use('/apply-cv', require(__dirname + '/apply-cv'));
+router.use('/cv-of-job', require(__dirname + '/cv-of-job'));
 
 module.exports = router;
