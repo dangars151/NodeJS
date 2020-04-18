@@ -34,8 +34,8 @@
 }
 
 .search-advance {
-    margin-left: 552px;
-    display: inline-block;
+    position: absolute;
+    right: 20px;
 }
 
 .title {

@@ -1,4 +1,4 @@
-<nav style="justify-content: space-between; background-color: white !important;" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav style="justify-content: space-between; background-color: white !important; padding: 2px 0px;" class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#" style="font-size: 40px;">Job<b>start</b></a>
 
     <ul class="navbar-nav">
@@ -31,20 +31,22 @@
             <li class="nav-item">
                 <a class="nav-link" href="/signout" id="signout">Đăng xuất</a>
             </li>
+            <li style="display: none;" value="<%=data.companyId%>" id="notificationsAjax"></li>
             <li class="nav-item" style="position: relative;">
                 <a href="#" id="notificationLink" value='<%=data.companyId%>'><i class="fas fa-bell fa-2x"></i></a>
-                <% if (typeof(data.countNotificationsIsNotRead) != 'undefined' && data.countNotificationsIsNotRead >0) {%>
+                <!-- <% if (typeof(data.countNotificationsIsNotRead) != 'undefined' && data.countNotificationsIsNotRead >0) {%>
                     <span id="notification_count"><%=data.countNotificationsIsNotRead%></span>
                 <%} else {%>
                     <span id="notification_count" style="display: none;"><%=0%></span>
-                <% } %>
+                <% } %> -->
+                <span id="notification_count" style="display: none;"></span>
                 <div id="notificationContainer">
                     <div id="notificationsBody" class="notifications">
-                        <% if(typeof(data.notifications) != 'undefined') { %>
+                        <!-- <% if(typeof(data.notifications) != 'undefined') { %>
                             <%for(let i=0; i< data.notifications.length; i++) {%>
                                 <div><%= data.notifications[i].title %></div>
                             <% } %>
-                        <% } %>
+                        <% } %> -->
                     </div>
                     <div id="notificationFooter"><a href="#" style="text-decoration: none;">See All</a></div>
                 </div>
@@ -85,7 +87,7 @@
                 <% if(data.image == null) {%>
                 <a href="/"><img class="avatar" src="public/images/default-image.png"></a>
                 <%} else {%>
-                <a href="/"><img class="avatar" src="<%= data.image %>"></a>
+                <a href="/personal-page"><img class="avatar" src="<%= data.image %>"></a>
                 <% } %>
             </li>
         <%}%>

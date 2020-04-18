@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/do-an-test', {useNewUrlParser: true, useUnifiedTopology: true });
 
+mongoose.set('useFindAndModify', false);
+
 var JobSchema = mongoose.Schema({
     title: String,
     name: String,

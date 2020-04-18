@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+</head>
+<body>
+    <% if(typeof(msg) != 'undefined' && typeof(fullname) != 'undefined') {%>
+        <span style="color: red;"><%=msg%><a href="#"><%=fullname%></a> nào!</span>
+    <% } %>
+    <% if(typeof(title) != 'undefined') {%>
+        <h3><%=title%></h3>
+    <% } %>
+    <table class="table table-borderless">
+        <tbody>
+            <tr>
+                <th scope="row">Tiêu đề email</th>
+                <td style="width: 90%;">
+                    <input type="text" class="form-control" style="width: 43%;" id="subject" required>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Nội dung</th>
+                <td style="width: 90%;">
+                    <textarea cols="71" rows="3" id="content" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button class="btn btn-primary" style="width: 100px;" id="send" type="button">Gửi</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    $('#send').click(function(e){
+        var subject = document.getElementById("subject").value;
+        var content = document.getElementById("content").value;
+        $.ajax({
+            url: '/send-mail',
+            type: 'POST',
+            data: {
+                subject: subject,
+                content: content
+            }
+        }).then(function(data) {
+            alert(data);
+        })
+    })
+</script>
+</html>

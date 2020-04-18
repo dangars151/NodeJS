@@ -3,11 +3,13 @@ const express = require('express');
 const app = express();
 const port = 3000;
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
 var session = require('express-session');
 var path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: true} ));
+app.use(cookieParser())
 
 app.set('trust proxy', 1);
 app.use(session({

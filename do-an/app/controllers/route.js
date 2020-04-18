@@ -1,7 +1,7 @@
 var express = require("express");
 
 var router = express.Router();
-//var path = require('path');
+
 // router.get('/admin-menu', function(req, res) {
 //     res.render('admin-menu');
 // });
@@ -27,5 +27,11 @@ router.use('/job-detail', require(__dirname + '/job-detail'));
 router.use('/cancel-save-job', require(__dirname + '/cancel-save-job'));
 router.use('/handle-notification', require(__dirname + '/handle-notification'));
 router.use('/apply-cv', require(__dirname + '/apply-cv'));
+router.use('/get-notifications-company', require(__dirname + '/get-notifications-company'));
+router.use('/call-video', require(__dirname + '/call-video'));
+router.use('/join-room', require(__dirname + '/join-room'));
+router.use('/accept-cv', require(__dirname + '/accept-cv'));
+router.use('/send-mail', require(__dirname + '/send-mail'));
+router.use('/personal-page', require(__dirname + '/personal-page'));
 
 module.exports = router;

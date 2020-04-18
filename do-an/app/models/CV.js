@@ -3,7 +3,6 @@ mongoose.connect('mongodb://localhost/do-an-test', {useNewUrlParser: true, useUn
 
 var CVSchema = mongoose.Schema({
     user_id: String,
-    job_id: String,
     file: String,
     status: Number
 })

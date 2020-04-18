@@ -34,23 +34,23 @@ router.post('/', function(req, res) {
         if (data.role == 'admin') {
             return res.render('manage-main', {jobs: fullJobs});
         }
-        if (data.role == 'company_user') {
-            notification.find({
-                company_id: data.companyId
-            }).sort({created_at: -1}).then(notifications => {
-                var countNotificationsIsNotRead = 0;
-                for(let i = 0; i < notifications.length; i++){
-                    if(notifications[i].is_read == 0) countNotificationsIsNotRead++;
-                }
-                data.notifications = notifications;
-                data.countNotificationsIsNotRead = countNotificationsIsNotRead;
-                req.session.user = data;
-                return res.render('main', {data: data, jobs: jobs, works: works});
-            })
-        } else {
-            req.session.user = data;
-            return res.render('main', {data: data, jobs: jobs, works: works});
-        }
+        // if (data.role == 'company_user') {
+        //     notification.find({
+        //         company_id: data.companyId
+        //     }).sort({created_at: -1}).then(notifications => {
+        //         var countNotificationsIsNotRead = 0;
+        //         for(let i = 0; i < notifications.length; i++){
+        //             if(notifications[i].is_read == 0) countNotificationsIsNotRead++;
+        //         }
+        //         data.notifications = notifications;
+        //         data.countNotificationsIsNotRead = countNotificationsIsNotRead;
+        //         req.session.user = data;
+        //         return res.render('main', {data: data, jobs: jobs, works: works});
+        //     })
+        // } else {
+        req.session.user = data;
+        return res.render('main', {data: data, jobs: jobs, works: works});
+        //}
     })
 });
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+    <style>
+        .room {
+            text-align: center;
+            margin: 10px;
+            background: white;
+        }
+
+        .room i {
+            margin-bottom: 10px;
+        }
+
+        .room input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: center;" class="bg-light">
+        <div id="create-room" class="room">
+            <i class="fas fa-user-plus fa-2x" style="margin-top: 15px;"></i>
+            <b>Tạo phòng để thực hiện cuộc phỏng vấn</b>
+            <br>
+            <button type="submit" class="btn btn-primary" id="btn-create-room">Tạo phòng</button>
+        </div> 
+        <div id="join-room" class="room">
+            <i class="fas fa-users fa-2x"></i>
+            <b>Tham gia phòng với mã code</b>
+            <form action="/call-video" method="POST">
+                <input type="text" placeholder="Nhập mã phòng" id="code" name="code" class="form-control" onchange="disableCreate()">
+                <button type="submit" class="btn btn-success">Tham gia</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function disableCreate() {
+        $("#btn-create-room").prop('disabled', true);
+    }
+    
+    $('#btn-create-room').click(function() {
+        $.ajax({
+            url: '/join-room',
+            type: 'post',
+        }).then(function(msg) {
+            alert(msg);
+        })
+    })
+</script>
+</html>

@@ -42,6 +42,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">CV</th>
+                                <th scope="col">Ứng viên</th>
                                 <th scope="col">Trạng thái</th>
                                 <th scope="col">Thao tác</th>
                             </tr>
@@ -51,7 +52,12 @@
                                 <tr>
                                     <th scope="row"><%=j+1%></th>
                                     <td><a href="<%= jobs[i].cvs[j].file %>">Xem chi tiết</a></td>
-                                    <td>test</td>
+                                    <td><a href="#">Xem chi tiết</a></td>
+                                    <% if(jobs[i].cvs[j].status == 0) {%>
+                                        <td>Mới</td>
+                                    <%} else if(jobs[i].cvs[j].status == 1) {%>
+                                        <td>Được chấp nhận</td>
+                                    <% } %>
                                     <td>
                                         <form action="/accept-cv" method="POST">
                                             <input type="hidden" name="userId" value="<%=jobs[i].cvs[j].user_id%>">

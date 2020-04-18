@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="shortcut icon" href="">
+
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+</head>
+<body>
+    Your Id:<span id="my-peer"></span>
+    <input type="text" id="username" placeholder="Nhập tên của bạn" required>
+    <button id="signup" style="display: none;">Signup</button>
+    <video id="localStream" width="300"></video>
+    <br /><br />
+    <video id="remoteStream" width="300"></video>
+    <br /><br />
+    <div id="user_list" value='<%=code%>' style="position: fixed; top: 0px; right: 0px;"></div>
+    <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+    <script>
+        function openStream() {
+            const config = { audio: true, video: true };
+            return navigator.mediaDevices.getUserMedia(config);
+        }
+
+        function playStream(idVideoTag, stream) {
+            const video = document.getElementById(idVideoTag);
+            if (!video.getAttribute("isplaying")) {
+                video.srcObject = stream;
+                video.setAttribute("isplaying", true);
+                video.play();
+            }
+        }
+
+        var peer = new Peer({key: 'lwjd5qra8257b9'});
+        peer.on('open', id => {
+            $('#my-peer').append(id);
+            document.getElementById("signup").style.display = "inline";
+        })
+
+        Pusher.logToConsole = true;
+        const pusher = new Pusher('9a681ec33ff0af53eae3', { 
+            cluster: 'ap1',
+            forceTLS: true,
+            authEndpoint: "https://ff98a053.ngrok.io/call-video/pusher/auth"
+        });
+      
+        //document.cookie = 'user_id=' + prompt("Your initials:");
+        const hashCode = s => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+        function addMemberToUserList(memberId) {
+            var n = memberId.indexOf("peer_id");
+            var codeIndex = memberId.indexOf("code");
+            var code = memberId.substring(codeIndex+4);
+            if (code == document.getElementById("user_list").getAttribute("value")) {
+                let peerId = memberId.substring(n+7, codeIndex);
+                memberId = memberId.substring(0, n);
+                userEl = document.createElement("div");
+                userEl.id = "user_"+memberId;
+                userEl.setAttribute("peer_id", peerId);
+                userEl.innerText = memberId;
+                userEl.style.backgroundColor = 'hsl('+hashCode(memberId)%360+',70%,60%)';
+                document.getElementById("user_list").appendChild(userEl);
+            }
+        }
+        peer.on("open", peerId => {
+            $("#signup").click(() => {
+                document.getElementById("signup").style.display = "none";
+                var code = document.getElementById('user_list').getAttribute('value');
+                //console.log(document.getElementById("username").value);
+                document.cookie = 'user_id=' + document.getElementById("username").value + 'peer_id' + peerId + 'code' + code;
+                const channel = pusher.subscribe('presence-quickstart');
+
+                channel.bind('pusher:subscription_succeeded', () => 
+                    channel.members.each(member => addMemberToUserList(member.id)));
+                    channel.bind('pusher:member_added', member => addMemberToUserList(member.id));
+                    channel.bind('pusher:member_removed', member => {
+                        const userEl = document.getElementById("user_"+member.id);
+                        userEl.parentNode.removeChild(userEl);
+                });
+            })
+        })
+
+        $("#user_list").on("click", "div", function() {
+            const id = $(this).attr("peer_id");
+            if (id != document.getElementById("my-peer").innerHTML) {
+                openStream()
+                .then(stream => {
+                    playStream('localStream', stream);
+                    const call = peer.call(id, stream);
+
+                    var remoteVideo = document.createElement("video");
+                    var randomId = "remoteStream-" + Math.floor(Math.random() * 10000);
+                    remoteVideo.setAttribute("id", randomId);
+                    remoteVideo.setAttribute("width", 300)
+                    document.body.appendChild(remoteVideo);
+
+                    call.on('stream', remoteStream => playStream(randomId, remoteStream));
+                })
+            }
+        })
+
+        peer.on('call', call => {
+            openStream()
+            .then(stream => {
+                call.answer(stream);
+                playStream('localStream', stream);
+
+                var remoteVideo = document.createElement("video");
+                var randomId = "remoteStream-" + Math.floor(Math.random() * 10000);
+                remoteVideo.setAttribute("id", randomId);
+                remoteVideo.setAttribute("width", 300)
+                document.body.appendChild(remoteVideo);
+
+                call.on('stream', remoteStream => playStream(randomId, remoteStream));
+            })
+        })
+    </script>
+    <style>
+        body { margin: 1em; }
+        #user_list div {
+            float: right; margin-left: -8px;
+            font-family: sans-serif; text-align: center;
+            height: 40px; width: 40px; line-height: 40px;
+            border-radius: 50%;
+            border: 3px solid white; color: white;
+        }
+    </style>
+</body>
+</html>

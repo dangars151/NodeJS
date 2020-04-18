@@ -2,6 +2,14 @@
     border: 1px solid black;
     display: inline-block;
     margin-bottom: 25px;
+    width: 100%;
+}
+
+#search input {
+    width: 275px;
+}
+#search select {
+    width: 265px;
 }
 
 .search-normal {
@@ -9,7 +17,16 @@
 }
 
 .search-advance {
-    margin-left: 618px;
+    position: relative;
+}
+
+.search-advance span {
+    position: absolute;
+    right: 28px;
+}
+
+.search-advance i {
+    margin-left: 930px;
 }
 
 /* .job {
