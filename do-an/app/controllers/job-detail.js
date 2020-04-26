@@ -13,6 +13,7 @@ router.get('/:id', function(req, res) {
     }).then(function(data) {
         jobDetail["companyImage"] = data.image;
         if(req.session.user) {
+            if(!req.session.user.image.includes("../")) req.session.user.image = '../' + req.session.user.image;
             return res.render('job-detail', {job: jobDetail, data: req.session.user});
         }
         return res.render('job-detail', {job: jobDetail});

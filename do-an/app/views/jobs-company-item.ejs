@@ -52,7 +52,7 @@
                                 <tr>
                                     <th scope="row"><%=j+1%></th>
                                     <td><a href="<%= jobs[i].cvs[j].file %>">Xem chi tiết</a></td>
-                                    <td><a href="#">Xem chi tiết</a></td>
+                                    <td><a href="user-detail/<%=jobs[i].cvs[j].user_id%>">Xem chi tiết</a></td>
                                     <% if(jobs[i].cvs[j].status == 0) {%>
                                         <td>Mới</td>
                                     <%} else if(jobs[i].cvs[j].status == 1) {%>
@@ -64,7 +64,7 @@
                                             <input type="hidden" name="jobId" value="<%=jobs[i]._id%>">
                                             <button class="btn btn-primary">Chấp nhận</button>
                                         </form>
-                                        <button class="btn btn-danger">Từ chối</button>
+                                        <!-- <button class="btn btn-danger">Từ chối</button> -->
                                     </td>
                                 </tr>
                             <%}%>

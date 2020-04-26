@@ -33,5 +33,8 @@ router.use('/join-room', require(__dirname + '/join-room'));
 router.use('/accept-cv', require(__dirname + '/accept-cv'));
 router.use('/send-mail', require(__dirname + '/send-mail'));
 router.use('/personal-page', require(__dirname + '/personal-page'));
+router.use('/user-detail', require(__dirname + '/user-detail'));
+router.use('/company-detail', require(__dirname + '/company-detail'));
+router.use('/follow-company', require(__dirname + '/follow-company'));
 
 module.exports = router;

@@ -16,6 +16,7 @@
 .job img{
     width: 60px;
     margin-left: -15px;
+    height: 68px;
 }
 
 .job b {
@@ -56,4 +57,8 @@
 .job a {
     text-decoration: none;
     color: black;
+}
+
+.job a:hover {
+    color: blue;
 }

@@ -117,9 +117,9 @@
                     <div class="row aos-init aos-animate job" data-aos="fade">
                         <% for(var i=0; i<jobs.length; i++) {%>
                             <div class="col-md-6 item">
-                                <img src="public/images/default-company.png" alt="">
+                                <img src="<%= jobs[i].companyImage %>" alt="">
                                 <a href="/job-detail/<%=jobs[i].id%>" class="title-item"><b><%= jobs[i].title %></b></a>
-                                <span class="company"><%= jobs[i].companyName %></span>
+                                <a class="company" href="/company-detail/<%=jobs[i].companyId%>" style="color: black;"><%= jobs[i].companyName %></a>
                                 <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
                                 <!-- <% if(typeof(data) == 'undefined') {%>

@@ -48,6 +48,7 @@
 
 .job img {
     width: 100px;
+    height: 100px;
 }
 
 .job .title-item {
@@ -61,6 +62,10 @@
     top: 35px;
     margin-left: 10px;
     font-size: 15px;
+}
+
+.job .company:hover {
+    color: blue !important;
 }
 
 .job .salary {
@@ -80,7 +85,7 @@
 .job a {
     position: absolute;
     font-size: 15px;
-    left: 470px;
+    /* left: 470px; */
     text-decoration: none;
     top: 35px;
 }

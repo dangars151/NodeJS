@@ -14,13 +14,13 @@
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
 
-        <div style="border: 1px solid black;">
+        <div style="border: 1px solid black; margin-top: 30px;">
             <div class="row" style="padding: 10px;">
                 <div class="col-4">
                     <img src="<%=data.image%>" style="width: 250px; height: 250px; border: 4px solid rgba(107, 121, 124, 0.2);">
                 </div>
                 <div class="col-8" style="margin-left: -60px;">
-                    <table class="table table-borderless" style="margin-top: 20px">
+                    <table class="table" style="margin-top: 20px">
                         <tr>
                             <td style="width: 130px;"><b>Họ tên</b></td>
                             <td><%=data.fullname%></td>
@@ -30,8 +30,12 @@
                             <td><%=data.email%></td>
                         </tr>
                         <tr>
-                            <td><b>Về tôi</b></td>
-                            <td><%=data.description%></td>
+                            <td><b>Ngày sinh</b></td>
+                            <td><%=data.birthday%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Điện thoại</b></td>
+                            <td><%=data.mobile%></td>
                         </tr>
                     </table>
                     <i class="fas fa-pencil-alt" 
@@ -40,6 +44,10 @@
                        data-target="#exampleModal">
                     </i>
                 </div>
+            </div>
+            <div class="card" style="margin: 10px;">
+                <div class="card-header"><b>Về tôi</b></div>
+                <div class="card-body"><%=data.description%></div>
             </div>
         </div>
 
@@ -59,6 +67,18 @@
                                     <td><b>Email</b></td>
                                     <td>
                                         <input type="text" class="form-control" name="email" value="<%=data.email%>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Ngày sinh</b></td>
+                                    <td>
+                                        <input type="date" class="form-control" name="birthday">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Điện thoại</b></td>
+                                    <td>
+                                        <input type="tel" class="form-control" name="mobile" value="<%=data.mobile%>">
                                     </td>
                                 </tr>
                                 <tr>

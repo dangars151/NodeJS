@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
     job.find().then(function(data) {
         fullJobs = data;
     })
-    user.findOne({email: req.body.email, password: req.body.password}).then(function(data){
+    user.findOne({email: req.body.email, password: req.body.password}, {'password': 0}).then(function(data){
         if (data == null) {
             return res.render('signin', {data: 'Mật khẩu hoặc tên đăng nhập không đúng!'});
         }

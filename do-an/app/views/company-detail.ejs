@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="../public/css/nav.css">
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
+    <style>
+        #website:hover {
+            color: blue !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div style="border: 1px solid black; margin-top: 30px;">
+            <div class="row" style="padding: 10px;">
+                <div class="col-4">
+                    <img src="../<%=company.image%>" style="width: 250px; height: 250px; border: 4px solid rgba(107, 121, 124, 0.2);">
+                </div>
+                <div class="col-6" style="margin-left: -20px;">
+                    <table class="table" style="margin-top: 20px">
+                        <tr>
+                            <td style="width: 130px;"><b>Tên</b></td>
+                            <td><%=company.name%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td><%=company.email%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Website</b></td>
+                            <td><a href="#" style="text-decoration: none; color: black;" id="website"><%=company.website%></a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Địa điểm</b></td>
+                            <td><%=company.location%></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row" style="padding: 10px;">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">Về công ty</div>
+                        <div class="card-body">
+                            <%=company.description%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -15,6 +15,7 @@ var JobSchema = mongoose.Schema({
     companyName: String,
     companyLocation: String,
     companyId: String,
+    companyImage: String,
     workId: String,
     cvs: [Object]
 })

@@ -32,6 +32,7 @@ router.post('/', function(req, res) {
             companyId: data._id,
             companyName: data.name,
             companyLocation: data.location,
+            companyImage: data.image,
             name: request.name,
             workId: request.work
         })

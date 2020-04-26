@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="../public/css/nav.css">
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div style="border: 1px solid black; margin-top: 30px;">
+            <div class="row" style="padding: 10px;">
+                <div class="col-4">
+                    <img src="../<%=userDetail.image%>" style="width: 250px; height: 250px; border: 4px solid rgba(107, 121, 124, 0.2);">
+                </div>
+                <div class="col-8" style="margin-left: -60px;">
+                    <table class="table" style="margin-top: 20px">
+                        <tr>
+                            <td style="width: 130px;"><b>Họ tên</b></td>
+                            <td><%=userDetail.fullname%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Email</b></td>
+                            <td><%=userDetail.email%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Ngày sinh</b></td>
+                            <% if(typeof(userDetail.birthday) != 'undefined') {%>
+                                <td><%=userDetail.birthday.getDate()%>-<%=userDetail.birthday.getMonth()+1%>-<%=userDetail.birthday.getFullYear()%></td>
+                            <%} else {%>
+                                <td></td>
+                            <%}%>
+                        </tr>
+                        <tr>
+                            <td><b>Điện thoại</b></td>
+                            <td><%=userDetail.mobile%></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card" style="margin: 10px">
+                <div class="card-header">Mô tả</div>
+                <div class="card-body"><%=userDetail.description%></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

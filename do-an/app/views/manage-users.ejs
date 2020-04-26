@@ -16,6 +16,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Họ tên</th>
                 <th scope="col">Email</th>
+                <th scope="col">Ngày sinh</th>
+                <th scope="col">Điện thoại</th>
                 <th scope="col">Vai trò</th>
                 <th scope="col">Mô tả</th>
             </tr>
@@ -26,6 +28,12 @@
                     <th scope="row"><%= i+1 %></th>
                     <td><%= users[i].fullname %></td>
                     <td><%= users[i].email %></td>
+                    <% if(typeof(users[i].birthday) != 'undefined') {%>
+                        <td><%= users[i].birthday.getDate() %>-<%= users[i].birthday.getMonth() + 1 %>-<%= users[i].birthday.getFullYear() %></td>
+                    <%} else {%>
+                        <td></td>
+                    <%}%>
+                    <td><%= users[i].mobile %></td>
                     <td><%= users[i].role %></td>
                     <td><%= users[i].description %></td>
                 </tr>
