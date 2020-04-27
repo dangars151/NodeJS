@@ -6,6 +6,27 @@
     <title>Document</title>
 
     <%- include('./head') %>
+    <script src='https://cdn.tiny.cloud/1/rxgs9sh11xrrtdfs2vtike5rt1takia2bbre0z2iiibwnt26/tinymce/5/tinymce.min.js' 
+            referrerpolicy="origin"
+            crossorigin="anonymous">
+    </script>
+    <script>
+        tinymce.init({
+            selector: "textarea",
+            setup: function (editor) {
+                editor.on('change', function () {
+                    tinymce.triggerSave();
+                });
+            },
+            content_style: 'p {margin: 2px}'
+        });
+    </script>
+    <style>
+        p {
+            padding: 0;
+            margin: 2px 0;
+        }
+    </style>
 </head>
 <body>
     <% if(typeof(msg) != 'undefined' && typeof(fullname) != 'undefined') {%>
@@ -25,7 +46,7 @@
             <tr>
                 <th scope="row">Nội dung</th>
                 <td style="width: 90%;">
-                    <textarea cols="71" rows="3" id="content" required></textarea>
+                    <textarea id="content" rows="15" required></textarea>
                 </td>
             </tr>
             <tr>
@@ -40,7 +61,7 @@
 <script>
     $('#send').click(function(e){
         var subject = document.getElementById("subject").value;
-        var content = document.getElementById("content").value;
+        var content = $('#content').val();
         $.ajax({
             url: '/send-mail',
             type: 'POST',
