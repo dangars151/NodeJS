@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="../public/css/nav.css">
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
@@ -18,13 +19,24 @@
         #website:hover {
             color: blue !important;
         }
+        .item {
+            margin-bottom: 5px;
+            background: white;
+        }
+        .item:hover, .item:focus {
+            -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+            top: -4px;
+            z-index: 2;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
-
-        <div style="border: 1px solid black; margin-top: 30px;">
+    </div>
+    <div style="margin-top: 10px; margin-bottom: 30px" class="bg-light">
+        <div class="container" style="background: white;">
             <div class="row" style="padding: 10px;">
                 <div class="col-4">
                     <img src="../<%=company.image%>" style="width: 250px; height: 250px; border: 4px solid rgba(107, 121, 124, 0.2);">
@@ -53,14 +65,47 @@
             <div class="row" style="padding: 10px;">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">Về công ty</div>
+                        <div class="card-header"><b>Về công ty</b></div>
                         <div class="card-body">
                             <%=company.description%>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row" style="padding: 10px;">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header" style="background: black; color: white;">
+                            <b>Việc làm của công ty</b>
+                        </div>
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <% for( let i = 0; i < jobsOfCompany.length; i++ ) {%>
+                                    <div class="col-6 item">
+                                        <a href="../job-detail/<%= jobsOfCompany[i]._id %>" style="text-decoration: none;">
+                                            <%= jobsOfCompany[i].title %>
+                                        </a>
+                                        <span class="bg-danger text-white badge py-2 px-4" style="margin-left: 20px;">
+                                            <%= jobsOfCompany[i].name %>
+                                        </span>
+                                        <br>
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <span><%= jobsOfCompany[i].salary_from %>-<%= jobsOfCompany[i].salary_to %> triệu</span>
+                                        <i class="far fa-calendar-alt" style="margin-left: 30px;"></i>
+                                        <span>
+                                            <%= jobsOfCompany[i].out_date.getDate() %>-
+                                            <%= jobsOfCompany[i].out_date.getMonth() +1 %>-
+                                            <%= jobsOfCompany[i].out_date.getFullYear() %>
+                                        </span>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <%- include('./footer.ejs') %>
 </body>
 </html>

@@ -6,15 +6,9 @@
     <title>Document</title>
 
     <%- include('./head') %>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-
     <link rel="stylesheet" href="../public/css/job-detail.css">
     <link rel="stylesheet" href="../public/css/nav.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <script>
         $(document).ready(function(){
@@ -25,8 +19,9 @@
 <body>
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
-
-        <div class="pt-2 pb-2" style="border: 1px solid black; padding: 10px; margin-top: 25px;">
+    </div>
+    <div class="bg-light">
+        <div class="container pt-2 pb-2" style="padding: 10px; margin-top: 10px; background: white; margin-bottom: 30px;">
             <div class="justify-content-center pt-5 pb-5" style="padding-top: 1rem !important; padding-bottom: 1rem !important;">
                 <div class="tab-content" style="background: #fff;">      
                     <div class="row aos-init aos-animate" data-aos="fade">
@@ -34,7 +29,7 @@
                             <!-- <img src="<%= job.companyImage %>" alt=""> -->
                             <img src="../<%= job.companyImage %>" alt="">
                             <h1><%= job.title %></h1>
-                            <h3 class="company"><%= job.companyName %></h3>
+                            <h3 class="company"><a href="../company-detail/<%=job.companyId%>" style="text-decoration: none;"><%= job.companyName %></a></h3>
                             <span class="salary">Lương: <%= job.salary_from %>-<%= job.salary_to %> triệu</span>
                             <span class="location">Địa chỉ: <%= job.companyLocation %></span>
                             <span class="out-date">Ngày hết hạn: <%= job.out_date.getDate() %>-<%= job.out_date.getMonth()+1 %>-<%= job.out_date.getFullYear() %></span>
@@ -94,6 +89,7 @@
             </div>
         </div>
     </div>
+    <%- include('./footer.ejs') %>
 </body>
 <script>
     $("#save").click(function(e) {

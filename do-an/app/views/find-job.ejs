@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/find-job.css">
+    <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/fontawesome/css/all.css">
 
     <script>
@@ -21,25 +22,29 @@
 <body>
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
-        <div id="search">
-            <form class="form-inline" action="find-job" method="POST">
-                <div class="form-group mb-2 search-normal">
-                    <input name="title" type="text" class="form-control" placeholder="eg. Lập trình viên">
+    </div>
+    <div class="bg-light">
+        <div class="container">
+            <div id="search" style="background: white;">
+                <form class="form-inline" action="find-job" method="POST">
+                    <div class="form-group mb-2 search-normal">
+                        <input name="title" type="text" class="form-control" placeholder="eg. Lập trình viên">
+                    </div>
+                    <select class="form-control search-normal" name="name">
+                        <option value="">Ngành nghề</option>
+                        <% for(var i=0; i<titles.length; i++) {%>
+                            <option value="<%= titles[i]._id %>"><%= titles[i].name %></option>
+                        <%}%>
+                    </select>
+                    <div class="form-group mb-2 search-normal">
+                        <input name='location' type="text" class="form-control" placeholder="Location">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2 search-normal">Tìm việc ngay</button>
+                </form>
+                <div class="search-advance" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fas fa-search"></i>
+                    <span>Tìm kiếm nâng cao</span>
                 </div>
-                <select class="form-control search-normal" name="name">
-                    <option value="">Ngành nghề</option>
-                    <% for(var i=0; i<titles.length; i++) {%>
-                        <option value="<%= titles[i]._id %>"><%= titles[i].name %></option>
-                    <%}%>
-                </select>
-                <div class="form-group mb-2 search-normal">
-                    <input name='location' type="text" class="form-control" placeholder="Location">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2 search-normal">Tìm việc ngay</button>
-            </form>
-            <div class="search-advance" data-toggle="modal" data-target="#exampleModal">
-                <i class="fas fa-search"></i>
-                <span>Tìm kiếm nâng cao</span>
             </div>
         </div>
     
@@ -92,26 +97,7 @@
             </div>
         </div>
 
-        <!-- <div class="card">
-            <div class="card-header">VIỆC LÀM</div>
-            <div class="card-body">
-                <div class="row">
-                    <% for(var i=0; i<jobs.length; i++) {%>
-                        <div class="col-4 job">
-                            <img src="public/images/default-company.png" alt="">
-                            <b><%= jobs[i].title %></b>
-                            <span class="company"><%= jobs[i].companyName %></span>
-                            <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
-                            <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
-                        </div>
-                    <% } %>
-                </div>
-            </div>
-        </div> -->
-        <div class="pt-2 pb-2 bg-light">
-            <!-- <% if(typeof(msg) != 'undefined') {%>
-                <span><%= msg %></span>
-            <% } %> -->
+        <div class="pt-2 pb-2">
             <div class="container justify-content-center pt-5 pb-5" style="padding-top: 1rem !important;">
                 <div class="tab-content">      
                     <div class="row aos-init aos-animate job" data-aos="fade">
@@ -122,14 +108,6 @@
                                 <a class="company" href="/company-detail/<%=jobs[i].companyId%>" style="color: black;"><%= jobs[i].companyName %></a>
                                 <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
-                                <!-- <% if(typeof(data) == 'undefined') {%>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Đăng nhập để lưu">
-                                        Lưu việc
-                                    </a>
-                                <% } else if(data.role == 'candidate_user') {%>
-                                    <a href="/save-job">Lưu việc</a> -->
-                                    <!-- <button value="<%=jobs[i].title%>" class="save">Lưu việc</button> -->
-                                <!-- <% } %> -->
                             </div>
                         <% } %>
                     </div>
@@ -137,24 +115,6 @@
             </div>
         </div>
     </div>
+    <%- include('./footer.ejs') %>
 </body>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-<!-- <script>
-    var save = document.getElementsByClassName("save");
-    
-    for (let i = 0; i< save.length; i++) {
-        save[i].onclick = function(){
-            $.ajax({
-                url: '/save-job',
-                type: 'get',
-                data: {
-                    jobId: save[i].value
-                }
-            }).then(function(data) {
-                alert(data);
-            })
-        }
-    }
-</script> -->
-
 </html>

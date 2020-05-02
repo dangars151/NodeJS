@@ -1,8 +1,7 @@
 #search {
-    border: 1px solid black;
     display: inline-block;
-    margin-bottom: 25px;
-    width: 100%;
+    width: 102%;
+    margin: 15px 0px 15px -12px;
 }
 
 #search input {
@@ -22,7 +21,7 @@
 
 .search-advance span {
     position: absolute;
-    right: 28px;
+    right: 53px;
 }
 
 .search-advance i {
