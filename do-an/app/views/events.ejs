@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+    </div>
+
+    <div class="bg-light">
+        <div class="container">
+            <div style="margin-top: 10px" class="row">
+                <% if(typeof(events != 'undefined')) { %>
+                    <% for (let i = 0; i < events.length; i++) { %>
+                        <div class="col-6">
+                            <i>Sự kiện: </i><b><%= events[i].title %></b>
+                            <br>
+                            <span>
+                                Ngày: 
+                                <%= events[i].date.getDate() %>-
+                                <%= events[i].date.getMonth() + 1 %>-
+                                <%= events[i].date.getFullYear() %>
+                            </span>
+                            <br>
+                            <span>Giờ: <%= events[i].time %></span>
+                            <br>
+                            <!-- <p><%= events[i].participants %></p> -->
+                            <div class="form-inline">
+                                <form action="/event-cancel" method="POST">
+                                    <input type="hidden" name="eventId" value="<%=events[i]._id%>">
+                                    <button class="btn btn-danger" type="submit" style="margin-right: 10px;">Hủy sự kiện</button>
+                                </form>
+                                <button class="btn btn-warning" style="margin-right: 10px;">Thay đổi</button>
+                                <button 
+                                    class="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal<%=events[i]._id%>"
+                                >
+                                    Người tham gia
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="exampleModal<%=events[i]._id%>" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <table class="table">
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Người tham gia</td>
+                                                <td>Trạng thái</td>
+                                                <td>Lí do</td>
+                                            </tr>
+                                            <% for (let j = 0; j < events[i].participants.length; j++) { %>
+                                                <tr>
+                                                    <td><%= j+1 %></td>
+                                                    <td>
+                                                        <a href="user-detail/<%= events[i].participants[j].user_id %>">Xem chi tiết</a>
+                                                    </td>
+                                                    <td>
+                                                        <% if(events[i].participants[j].status == 0) { %>
+                                                            <span>Chưa trả lời</span>
+                                                        <% } else if(events[i].participants[j].status == 1) { %>
+                                                            <span>Chấp nhận</span>
+                                                        <% } else { %>
+                                                            <span>Từ chối</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td><%= events[i].participants[j].reason %></td>
+                                                </tr>
+                                            <% } %>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../public/js/notification.js"></script>
+<script src="../public/js/handleReadNotification.js"></script>
+<script src="../public/js/notificationDB.js"></script>
+</html>

@@ -8,6 +8,6 @@ $(document).ready(function() {
         $("#notificationContainer").hide();
     });
     $("#notificationContainer").click(function(){
-        return false;
+        return true;
     });
 });

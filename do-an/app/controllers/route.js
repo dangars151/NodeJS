@@ -36,5 +36,10 @@ router.use('/personal-page', require(__dirname + '/personal-page'));
 router.use('/user-detail', require(__dirname + '/user-detail'));
 router.use('/company-detail', require(__dirname + '/company-detail'));
 router.use('/follow-company', require(__dirname + '/follow-company'));
+router.use('/events', require(__dirname + '/events'));
+router.use('/recommend-email', require(__dirname + '/recommend-email'));
+router.use('/event-reject', require(__dirname + '/event-reject'));
+router.use('/event-accept', require(__dirname + '/event-accept'));
+router.use('/event-cancel', require(__dirname + '/event-cancel'));
 
 module.exports = router;

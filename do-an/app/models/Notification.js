@@ -7,7 +7,9 @@ var NotificationSchema = mongoose.Schema({
     company_id: String,
     is_read: Number,
     job_id: String,
-    created_at: Date
+    created_at: Date,
+    type: Number,
+    event_id: String
 })
 
 var NotificationModel = mongoose.model("notification", NotificationSchema);

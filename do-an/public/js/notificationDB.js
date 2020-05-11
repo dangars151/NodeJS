@@ -11,13 +11,17 @@ $(document).ready(function(){
         for (let i = 0; i < data.length; i++) {
             var node = document.createElement("div");
             var textnode = document.createTextNode(data[i].title);
+            var tagA = document.createElement("a");
+            if (data[i].type == 4) tagA.setAttribute('href', '/events/' + data[i].event_id);
             if (data[i].is_read == 0) {
                 notifyIsNotRead++;
                 var tagB = document.createElement("b");
                 tagB.appendChild(textnode);
-                node.appendChild(tagB);
+                tagA.appendChild(tagB);
+                node.appendChild(tagA);
             } else {
-                node.appendChild(textnode);
+                tagA.appendChild(textnode);
+                node.appendChild(tagA);
             }
             notificationsBody.appendChild(node);
         }

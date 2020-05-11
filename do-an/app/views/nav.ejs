@@ -29,6 +29,12 @@
                 <a class="nav-link" href="/create-job">Tạo việc làm</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/join-room">Phỏng vấn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/events">Sự kiện</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/signout" id="signout">Đăng xuất</a>
             </li>
             <li style="display: none;" value="<%=data.companyId%>" id="notificationsAjax"></li>
@@ -70,10 +76,16 @@
                 <a class="nav-link" href="/find-job">Tìm việc ngay</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/join-room">Phỏng vấn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/events">Sự kiện</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/signout">Đăng xuất</a>
             </li>
             <li style="display: none;" id="user-id" value="<%=data._id%>"></li>
-            <li class="nav-item" style="position: relative;">
+            <!-- <li class="nav-item" style="position: relative;">
                 <a href="#" id="notificationLink"><i class="fas fa-bell fa-2x"></i></a>
                 <span id="notification_count">3</span>
                 <div id="notificationContainer">
@@ -83,7 +95,7 @@
                     </div>
                     <div id="notificationFooter"><a href="#" style="text-decoration: none;">See All</a></div>
                 </div>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <% if(data.image == null) {%>
                 <a href="/"><img class="avatar" src="public/images/default-image.png"></a>

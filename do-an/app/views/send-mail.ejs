@@ -26,6 +26,13 @@
             padding: 0;
             margin: 2px 0;
         }
+        #recommend {
+            background-color: #fff;
+            border: 1px solid rgba(100, 100, 100, .4);
+            z-index: 1; 
+            position: absolute; 
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -38,21 +45,54 @@
     <table class="table table-borderless">
         <tbody>
             <tr>
-                <th scope="row">Tiêu đề email</th>
-                <td style="width: 90%;">
-                    <input type="text" class="form-control" style="width: 43%;" id="subject" required>
+                <th scope="row">Mời tham gia</th>
+                <td id="tdInvite">
+                    <input type="text" 
+                        class="form-control" 
+                        style="width: 90%;" 
+                        onkeypress="test(this)"
+                        id="invite"
+                        placeholder="Nhập email của những người tham gia ..."
+                    >
+                    <div id="recommend"></div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Tiêu đề cuộc hẹn</th>
+                <td style="width: 85%;">
+                    <input type="text" class="form-control" style="width: 90%;" id="subject" required>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Ngày diễn ra</th>
+                <td>
+                    <input type="date" class="form-control" style="width: 90%;" id="date" required>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Giờ diễn ra</th>
+                <td>
+                    <input type="time" class="form-control" style="width: 90%;" id="time" required>
                 </td>
             </tr>
             <tr>
                 <th scope="row">Nội dung</th>
-                <td style="width: 90%;">
-                    <textarea id="content" rows="15" required></textarea>
+                <td style="width: 85%;">
+                    <textarea 
+                        id="content" 
+                        rows="12" 
+                        style="width: 90%;" 
+                        required
+                        placeholder="Thời gian phỏng vấn, mã phòng ...">
+                    </textarea>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <button class="btn btn-primary" style="width: 100px;" id="send" type="button">Gửi</button>
+                    <button class="btn btn-primary" style="width: 150px;" id="send" type="button">
+                        Tạo cuộc hẹn
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -60,18 +100,68 @@
 </body>
 <script>
     $('#send').click(function(e){
+        var listEmails = [];
+        var listSpanEmails = $('#tdInvite span');
+        for (let i = 0; i < listSpanEmails.length; i++) {
+            listEmails.push(listSpanEmails[i].innerHTML);
+        }
+        
         var subject = document.getElementById("subject").value;
         var content = $('#content').val();
+        var time = $('#time').val();
+        var date = $('#date').val();
+        
         $.ajax({
             url: '/send-mail',
             type: 'POST',
             data: {
                 subject: subject,
-                content: content
+                content: content,
+                listEmails: listEmails,
+                date: date,
+                time: time
             }
         }).then(function(data) {
             alert(data);
         })
+    })
+</script>
+<script>
+    var typing;
+    function test(e){
+        clearTimeout(typing);
+        typing = setTimeout(function(){
+            $.ajax({
+                url: '/recommend-email',
+                type: 'post',
+                data: {data: $('#invite').val()}
+            }).then(function(data) {
+                $("#recommend p").remove();
+                var recommend = document.getElementById('recommend');
+                for (let i = 0; i < data.length; i++) {
+                    let p = document.createElement('p');
+                    p.setAttribute('user_id', data[i]._id);
+                    let text = document.createTextNode(data[i].email);
+                    p.appendChild(text);
+                    recommend.appendChild(p);
+                }
+                recommend.style.display = 'block';
+            })
+        } , 200);
+    }
+</script>
+<script>
+    $('#recommend').on('click', 'p', function() {
+        let span = document.createElement('span');
+        span.setAttribute('user_id', this.getAttribute('user_id'));
+        let text = document.createTextNode(this.innerHTML);
+        span.appendChild(text);
+        span.style.border = '1px solid black';
+        span.style.borderRadius = '10px';
+        span.style.marginRight = '8px';
+        document.getElementById('tdInvite').appendChild(span);
+        document.getElementById('recommend').style.display = 'none';
+        $('#invite').val('');
     })
 </script>
 </html>

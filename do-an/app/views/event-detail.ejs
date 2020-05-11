@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="../public/css/nav.css">
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div style="margin-top: 30px;">
+            <% if (typeof(msg) == 'undefined') { %>
+
+                <% for(let i=0; i<event.participants.length; i++) { %>
+                    <% if(data._id == event.participants[i].user_id) { %>
+                        <% if(event.participants[i].status == 1) { %>
+                            <i style="color: red;">Bạn đã chấp nhận tham gia sự kiện này</i>
+                            <br><br>
+                        <% } %>
+                        <% if(event.participants[i].status == 2) { %>
+                            <i style="color: red;">
+                                Bạn đã từ chối tham gia sự kiện này vì lí do: <%=event.participants[i].reason%>
+                            </i>
+                            <br><br>
+                        <% } %>
+                    <% } %>
+                <% } %>
+                <span style="display: none;" id="event-id" value="<%= event._id %>"></span>
+                <i>Sự kiện: </i><b><%= event.title %></b>
+                <br>
+                <span>
+                    Ngày: 
+                    <%= event.date.getDate() %>-
+                    <%= event.date.getMonth() + 1 %>-
+                    <%= event.date.getFullYear() %>
+                </span>
+                <br>
+                <span>Giờ: <%= event.time %></span>
+                <br>
+                <button class="btn btn-primary" id="accept">Chấp nhận</button>
+                <button class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Từ chối</button>
+            
+            <% } else { %>
+                <i style="color: red;"><%=msg%></i>
+            <% } %>
+        </div>
+
+        <div id="exampleModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Lí do từ chối tham gia sự kiện</p>
+                        <input type="text" class="form-control" id="reason" required>
+                        <br>
+                        <button class="btn btn-primary" id="reject">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var eventId = document.getElementById('event-id').getAttribute('value');
+    
+    $("#accept").click(function(e) {
+        $.ajax({
+            url: "/event-accept",
+            type: "POST",
+            data: { eventId: eventId }
+        }).then(data => {
+            alert(data);
+        })
+    })
+
+    $("#reject").click(function(e) {
+        $.ajax({
+            url: "/event-reject",
+            type: "POST",
+            data: { eventId: eventId, reason: $('#reason').val() }
+        }).then(data => {
+            alert(data);
+        })
+    })
+</script>
+<script src="../public/js/notification.js"></script>
+<script src="../public/js/handleReadNotification.js"></script>
+<script src="../public/js/notificationDB.js"></script>
+</html>
