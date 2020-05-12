@@ -9,7 +9,8 @@ router.post('/', (req, res) => {
     event.findOneAndUpdate({_id: req.body.eventIdUpdated}, {
         title: req.body.title,
         date: req.body.date,
-        time: req.body.time
+        time: req.body.time,
+        code: req.body.code
     }).then(data => {
         return notification.updateMany({event_id: req.body.eventIdUpdated}, {
             title: 'Sự kiện ' + data.title + ' đã bị thay đổi',

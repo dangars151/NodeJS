@@ -9,6 +9,7 @@ var EventSchema = mongoose.Schema({
     title: String,
     time: String,
     date: Date,
+    code: String,
     participants: [
         {
             user_id: String,

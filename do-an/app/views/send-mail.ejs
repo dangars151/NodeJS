@@ -37,10 +37,7 @@
 </head>
 <body>
     <% if(typeof(msg) != 'undefined' && typeof(fullname) != 'undefined') {%>
-        <span style="color: red;"><%=msg%><a href="#"><%=fullname%></a> nào!</span>
-    <% } %>
-    <% if(typeof(title) != 'undefined') {%>
-        <h3><%=title%></h3>
+        <span style="color: red;"><%=msg%></span>
     <% } %>
     <table class="table table-borderless">
         <tbody>
@@ -76,6 +73,12 @@
                 </td>
             </tr>
             <tr>
+                <th scope="row">Mã phòng</th>
+                <td>
+                    <input type="text" class="form-control" style="width: 90%;" id="code" required>
+                </td>
+            </tr>
+            <!-- <tr>
                 <th scope="row">Nội dung</th>
                 <td style="width: 85%;">
                     <textarea 
@@ -86,7 +89,7 @@
                         placeholder="Thời gian phỏng vấn, mã phòng ...">
                     </textarea>
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td></td>
                 <td>
@@ -110,6 +113,7 @@
         var content = $('#content').val();
         var time = $('#time').val();
         var date = $('#date').val();
+        var code = $('#code').val();
         
         $.ajax({
             url: '/send-mail',
@@ -119,7 +123,8 @@
                 content: content,
                 listEmails: listEmails,
                 date: date,
-                time: time
+                time: time,
+                code: code
             }
         }).then(function(data) {
             alert(data);

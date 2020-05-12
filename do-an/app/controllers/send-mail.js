@@ -47,6 +47,7 @@ router.post('/', function(req, res) {
             title: req.body.subject,
             time: req.body.time,
             date: req.body.date,
+            code: req.body.code,
             participants: participants
         })
     }).then(data => {
@@ -56,13 +57,13 @@ router.post('/', function(req, res) {
         return notification.create(notifications);
     }).then(data => {
         // sendmail
-        let mailOptions = {
-            from: 'nodejsmailtest1501@gmail.com',
-            to: 'hathedang1501@gmail.com, nodejsmailtest1501@gmail.com',
-            //to: req.session.user.email
-            subject: req.body.subject,
-            html: req.body.content
-        };
+        // let mailOptions = {
+        //     from: 'nodejsmailtest1501@gmail.com',
+        //     to: 'hathedang1501@gmail.com, nodejsmailtest1501@gmail.com',
+        //     //to: req.session.user.email
+        //     subject: req.body.subject,
+        //     html: req.body.content
+        // };
 
         // transporter.sendMail(mailOptions, (error, info) => {
         //     if (error) {

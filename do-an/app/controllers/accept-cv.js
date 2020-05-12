@@ -25,8 +25,7 @@ router.post('/', function(req, res) {
         return user.findOne({_id: req.body.userId}, 'fullname');
     }).then(data => {
         return res.render('send-mail', {
-            msg: 'Bạn đã chấp nhận cv của ứng viên thành công. Nhanh tay gửi mail để hẹn phỏng vấn với ',
-            title: 'Email hẹn phỏng vấn',
+            msg: 'Bạn đã chấp nhận cv của ứng viên thành công! Hãy nhanh tay tạo cuộc hẹn phỏng vấn nào!',
             fullname: data.fullname
         })
     })

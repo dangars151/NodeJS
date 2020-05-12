@@ -38,7 +38,8 @@
                             <br>
                             <span>Giờ: <%= events[i].time %></span>
                             <br>
-                            <!-- <p><%= events[i].participants %></p> -->
+                            <span>Mã phòng: <%= events[i].code %></span>
+                            <br>
                             <div class="form-inline">
                                 <form action="/event-cancel" method="POST">
                                     <input type="hidden" name="eventId" value="<%=events[i]._id%>">
@@ -108,6 +109,8 @@
                                             Ngày <input type="date" class="form-control" name="date">
                                             <br>
                                             Giờ <input type="time" class="form-control" name="time">
+                                            <br>
+                                            Mã phòng <input type="text" class="form-control" name="code" value="<%=events[i].code%>">
                                             <br>
                                             <button class="btn btn-warning" type="submit">Cập nhật</button>
                                         </form>
