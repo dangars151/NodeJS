@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
     .then(data => {
         for (let i = 0; i < data.length; i++) {
             notifications.push({
-                company_id: data[i].companyId,
+                company_id: data[i].companyId || data[i]._id,
                 title: req.body.subject,
                 is_read: 0,
                 type: 4,
@@ -53,24 +53,24 @@ router.post('/', function(req, res) {
         for (let i = 0; i < notifications.length; i++) {
             notifications[i].event_id = data._id;
         }
-        notification.create(notifications);
+        return notification.create(notifications);
+    }).then(data => {
+        // sendmail
+        let mailOptions = {
+            from: 'nodejsmailtest1501@gmail.com',
+            to: 'hathedang1501@gmail.com, nodejsmailtest1501@gmail.com',
+            //to: req.session.user.email
+            subject: req.body.subject,
+            html: req.body.content
+        };
+
+        // transporter.sendMail(mailOptions, (error, info) => {
+        //     if (error) {
+        //         return console.log(error.message);
+        //     }
+            return res.json('Tạo cuộc hẹn thành công!')
+        //});
     })
-
-    // sendmail
-    // let mailOptions = {
-    //     from: 'nodejsmailtest1501@gmail.com',
-    //     to: 'hathedang1501@gmail.com, nodejsmailtest1501@gmail.com',
-    //     //to: req.session.user.email
-    //     subject: req.body.subject,
-    //     html: req.body.content
-    // };
-
-    // transporter.sendMail(mailOptions, (error, info) => {
-    //     if (error) {
-    //         return console.log(error.message);
-    //     }
-    //     return res.json('Gửi mail thành công!')
-    // });
 });
 
 module.exports = router;

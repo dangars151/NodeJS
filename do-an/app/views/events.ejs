@@ -17,10 +17,16 @@
 
     <div class="bg-light">
         <div class="container">
+            <a href="/send-mail">
+                <button class="btn btn-primary" style="margin-top: 20px;">
+                    Thêm sự kiện
+                </button>
+            </a>
+            <br><br>
             <div style="margin-top: 10px" class="row">
                 <% if(typeof(events != 'undefined')) { %>
                     <% for (let i = 0; i < events.length; i++) { %>
-                        <div class="col-6">
+                        <div class="col-6" style="margin-bottom: 20px;">
                             <i>Sự kiện: </i><b><%= events[i].title %></b>
                             <br>
                             <span>
@@ -38,7 +44,14 @@
                                     <input type="hidden" name="eventId" value="<%=events[i]._id%>">
                                     <button class="btn btn-danger" type="submit" style="margin-right: 10px;">Hủy sự kiện</button>
                                 </form>
-                                <button class="btn btn-warning" style="margin-right: 10px;">Thay đổi</button>
+                                <button 
+                                    class="btn btn-warning" 
+                                    style="margin-right: 10px;"
+                                    data-toggle="modal"
+                                    data-target="#modal<%=events[i]._id%>"
+                                >
+                                    Thay đổi
+                                </button>
                                 <button 
                                     class="btn btn-success"
                                     data-toggle="modal"
@@ -79,6 +92,25 @@
                                                 </tr>
                                             <% } %>
                                         </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="modal<%=events[i]._id%>" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <form action="/event-update" method="POST">
+                                            <input type="hidden" name="eventIdUpdated" value="<%=events[i]._id%>">
+                                            Sự kiện <input type="text" name="title" class="form-control" value="<%=events[i].title%>">
+                                            <br>
+                                            Ngày <input type="date" class="form-control" name="date">
+                                            <br>
+                                            Giờ <input type="time" class="form-control" name="time">
+                                            <br>
+                                            <button class="btn btn-warning" type="submit">Cập nhật</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

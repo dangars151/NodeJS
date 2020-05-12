@@ -32,6 +32,15 @@
                     <% } %>
                 <% } %>
                 <span style="display: none;" id="event-id" value="<%= event._id %>"></span>
+                <i>Người tạo: </i>
+                <a href="/user-detail/<%=event.creator_id._id%>">
+                    <% if(event.creator_id.fullname) { %>
+                        <%=event.creator_id.fullname%>
+                    <% } else { %>
+                        <%=event.creator_id.email%>
+                    <% } %>
+                </a>
+                <br>
                 <i>Sự kiện: </i><b><%= event.title %></b>
                 <br>
                 <span>

@@ -12,6 +12,7 @@ $(document).ready(function(){
             var node = document.createElement("div");
             var textnode = document.createTextNode(data[i].title);
             var tagA = document.createElement("a");
+            tagA.style.color = 'black';
             if (data[i].type == 4) tagA.setAttribute('href', '/events/' + data[i].event_id);
             if (data[i].is_read == 0) {
                 notifyIsNotRead++;

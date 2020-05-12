@@ -41,5 +41,6 @@ router.use('/recommend-email', require(__dirname + '/recommend-email'));
 router.use('/event-reject', require(__dirname + '/event-reject'));
 router.use('/event-accept', require(__dirname + '/event-accept'));
 router.use('/event-cancel', require(__dirname + '/event-cancel'));
+router.use('/event-update', require(__dirname + '/event-update'));
 
 module.exports = router;
