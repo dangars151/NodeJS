@@ -87,7 +87,7 @@
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <button class="btn btn-primary" type="submit">Tạo việc làm</button>
+                                        <button class="btn btn-primary" type="submit">Tìm việc ngay</button>
                                     </td>
                                 </tr>
                             </form>
@@ -106,7 +106,7 @@
                                 <img src="<%= jobs[i].companyImage %>" alt="">
                                 <a href="/job-detail/<%=jobs[i].id%>" class="title-item"><b><%= jobs[i].title %></b></a>
                                 <a class="company" href="/company-detail/<%=jobs[i].companyId%>" style="color: black;"><%= jobs[i].companyName %></a>
-                                <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
+                                <span class="salary"><i class="fas fa-money-bill-wave"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
                             </div>
                         <% } %>

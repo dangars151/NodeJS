@@ -14,7 +14,8 @@ router.post('/', (req, res) => {
     }).then(data => {
         return notification.updateMany({event_id: req.body.eventIdUpdated}, {
             title: 'Sự kiện ' + data.title + ' đã bị thay đổi',
-            is_read: 0
+            is_read: 0,
+            created_at: Date.now()
         })
     }).then(data => {
         return event.find({creator_id: req.session.user._id});

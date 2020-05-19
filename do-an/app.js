@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
 var session = require('express-session');
 var path = require('path');
+var https = require('https');
+var fs = require('fs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: true} ));
@@ -31,4 +33,9 @@ app.use('/public', express.static(path.join(__dirname + '/public')));
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 
+var options = {
+    key: fs.readFileSync(path.join(__dirname, '/keys/key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, '/keys/cert.pem'))
+};
+https.createServer(options, app).listen(443);
 // var io = socketio(server);

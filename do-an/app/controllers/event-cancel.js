@@ -10,7 +10,8 @@ router.post('/', (req, res) => {
     .then(data => {
         notification.updateMany({event_id: req.body.eventId}, {
             title: 'Sự kiện ' + data.title + ' đã bị hủy.',
-            is_read: 0
+            is_read: 0,
+            created_at: Date.now()
         }).then(data => {
             //console.log(data);
         })

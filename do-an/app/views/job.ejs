@@ -9,7 +9,7 @@
                         <a href="/job-detail/<%=jobs[i].id%>" class="detail"><b><%= jobs[i].title %></b></a>
                         <!-- <a href="/job-detail"><b><%= jobs[i].title %></b></a> -->
                         <a class="company" href="/company-detail/<%=jobs[i].companyId%>"><%= jobs[i].companyName %></a>
-                        <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
+                        <span class="salary"><i class="fas fa-money-bill-wave"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                         <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
                     </div>
                 <% } %>

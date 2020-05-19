@@ -72,7 +72,7 @@
                                 <img src="../<%= jobs[i].companyImage %>" alt="">
                                 <a href="/job-detail/<%=jobs[i]._id%>"><b><%= jobs[i].title %></b></a>
                                 <a class="company" href="/company-detail/<%=jobs[i].companyId%>" style="color: black; text-decoration: none;"><%= jobs[i].companyName %></a>
-                                <span class="salary"><i class="fas fa-dollar-sign"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
+                                <span class="salary"><i class="fas fa-money-bill-wave"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                                 <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
                                 <!-- <a href="/cancel-save-job/<%=jobs[i]._id%>"><i class="fas fa-trash-alt"></i> Bỏ lưu</a> -->
                                 <form action="/cancel-save-job" method="POST">
