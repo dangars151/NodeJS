@@ -3,6 +3,7 @@ var express = require("express");
 var user = require('../models/User');
 var job = require('../models/Job');
 var company = require('../models/Company');
+var work = require('../models/Work');
 
 var router = express.Router();
 
@@ -15,8 +16,12 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     var jobs;
+    var works;
     job.find().then(function(data) {
         jobs = data;
+    })
+    work.find().then(function(data) {
+        works = data;
     })
     
     var form = new formidable.IncomingForm();
@@ -43,7 +48,7 @@ router.post('/', function(req, res) {
                 image: newpath
         }).then(function(data){
             req.session.user = data;
-            return res.render('main', { data: data, jobs: jobs } );
+            return res.render('main', { data: data, jobs: jobs, works: works } );
     })
     } else {
         var oldpath = files.imgCompany.path;
@@ -67,7 +72,7 @@ router.post('/', function(req, res) {
                 companyId: data._id
             })         
         }).then(function(data){
-            return res.render('main', { data: req.session.user, jobs: jobs } );
+            return res.render('main', { data: req.session.user, jobs: jobs, works: works } );
         })
         })
     }

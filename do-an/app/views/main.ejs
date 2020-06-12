@@ -17,7 +17,7 @@
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
 
-        <%- include('./main-search.ejs', { jobs: jobs }) %>
+        <%- include('./main-search.ejs', { jobs: jobs, works: works }) %>
         
         <%- include('./job.ejs', { jobs: jobs }) %>
     </div>
