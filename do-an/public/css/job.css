@@ -16,7 +16,7 @@
 .job img{
     width: 60px;
     margin-left: -15px;
-    height: 68px;
+    height: 55px;
 }
 
 .job b {
@@ -27,22 +27,22 @@
 
 .job .company {
     position: absolute;
-    top: 20px;
+    top: 25px;
     margin-left: 10px;
     font-size: 15px;
 }
 
 .job .salary {
     position: absolute;
-    top: 40px;
-    margin-left: 10px;
+    top: 25px;
+    margin-left: 140px;
     font-size: 15px;
 }
 
 .job .location {
     position: absolute;
-    top: 40px;
-    left: 215px;
+    top: 25px;
+    left: 330px;
     font-size: 15px;
 }
 
