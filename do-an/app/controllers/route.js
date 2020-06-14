@@ -42,5 +42,6 @@ router.use('/event-reject', require(__dirname + '/event-reject'));
 router.use('/event-accept', require(__dirname + '/event-accept'));
 router.use('/event-cancel', require(__dirname + '/event-cancel'));
 router.use('/event-update', require(__dirname + '/event-update'));
+router.use('/get-jobs-applied', require(__dirname + '/get-jobs-applied'));
 
 module.exports = router;

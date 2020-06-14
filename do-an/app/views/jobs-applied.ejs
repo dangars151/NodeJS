@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include('./head') %>
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/fontawesome/css/all.css">
+
+    <style>
+        .job img {
+            width: 100px;
+            height: 100px;
+        }
+        .item {
+            background: white;
+            margin-bottom: 5px;
+        }
+        .item:hover, .item:focus {
+            -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+            top: -4px;
+            z-index: 2;
+        }
+        .item b {
+            position: absolute;
+            margin-left: 10px;
+        }
+        .item .company {
+            position: absolute;
+            top: 30px;
+            margin-left: 10px;
+        }
+        .item span {
+            position: absolute;
+            top: 65px;
+            margin-left: 10px;
+        }
+        .item .cv {
+            position: absolute;
+            top: 65px;
+            margin-left: 310px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+
+        <div class="pt-2 pb-2 bg-light">
+            <div class="container justify-content-center pt-5 pb-5" style="padding: 15px !important;">
+                <div class="tab-content">
+                    <div class="row aos-init aos-animate job" data-aos="fade">
+                        <% for(var i=0; i<jobs.length; i++) { %>
+                            <div class="col-md-6 item">
+                                <img src="../<%= jobs[i].companyImage %>" alt="">
+                                <a href="/job-detail/<%=jobs[i]._id%>"><b><%= jobs[i].title %></b></a>
+                                <a class="company" href="/company-detail/<%=jobs[i].companyId%>" style="color: black; text-decoration: none;"><%= jobs[i].companyName %></a>
+                                <% for(var j=0; j<jobs[i].cvs.length; j++) {%>
+                                    <% if( typeof(jobs[i].cvs[j]) != 'undefined' ) {%>
+                                        <% if(jobs[i].cvs[j].status == 1) {%>
+                                            <span>Trạng thái: Được chấp nhận</span>
+                                        <% } else {%>
+                                            <span>Trạng thái: Chưa được chấp nhận</span>
+                                        <% } %>
+                                        <a href="<%=jobs[i].cvs[j].file%>" class="cv">Xem CV</a>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
