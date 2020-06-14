@@ -35,14 +35,14 @@
 .job .salary {
     position: absolute;
     top: 25px;
-    margin-left: 140px;
+    margin-left: 150px;
     font-size: 15px;
 }
 
 .job .location {
     position: absolute;
     top: 25px;
-    left: 330px;
+    left: 340px;
     font-size: 15px;
 }
 

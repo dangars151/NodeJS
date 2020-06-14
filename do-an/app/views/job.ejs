@@ -8,7 +8,7 @@
                         <img src="<%= jobs[i].companyImage %>" alt="">
                         <a href="/job-detail/<%=jobs[i].id%>" class="detail"><b><%= jobs[i].title %></b></a>
                         <!-- <a href="/job-detail"><b><%= jobs[i].title %></b></a> -->
-                        <a class="company" href="/company-detail/<%=jobs[i].companyId%>"><%= jobs[i].companyName %></a>
+                        <a class="company" href="/company-detail/<%=jobs[i].companyId%>"><i class="fas fa-building" style="color: blue;"></i> <%= jobs[i].companyName %></a>
                         <span class="salary"><i class="fas fa-money-bill-wave"></i> <%= jobs[i].salary_from %>-<%= jobs[i].salary_to %> triệu</span>
                         <span class="location"><i class="fas fa-map-marker-alt"></i> <%= jobs[i].companyLocation %></span>
                     </div>
