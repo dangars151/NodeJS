@@ -55,6 +55,7 @@ router.post('/', function(req, res) {
             pusher.trigger('NotifyCompany'+ job.companyId, 'my-event', {
                 "notification": data.title
             });
+            return res.redirect('job-detail/' + job._id);
         })
     })
 });
