@@ -59,7 +59,15 @@
                             <td><b>Địa điểm</b></td>
                             <td><%=company.location%></td>
                         </tr>
+                        <input type="hidden" id="companyId" value="<%=company.id%>">
                     </table>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary" 
+                            style="width: 80%;margin-top: 60%;margin-left: 48px;"
+                            id="btnFollow">
+                        Theo dõi
+                    </button>
                 </div>
             </div>
             <div class="row" style="padding: 10px;">
@@ -108,4 +116,15 @@
     </div>
     <%- include('./footer.ejs') %>
 </body>
+<script>
+    $("#btnFollow").click(function(e) {
+        $.ajax({
+            url: "/follow-company",
+            type: "POST",
+            data: { companyId: document.getElementById("companyId").getAttribute("value") }
+        }).then(data => {
+            alert(data);
+        })
+    })
+</script>
 </html>
