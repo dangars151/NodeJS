@@ -40,7 +40,8 @@
             }
         }
 
-        var peer = new Peer({key: 'lwjd5qra8257b9'});
+        //var peer = new Peer({key: 'lwjd5qra8257b9'});
+        var peer = new Peer({host:'peerjs-server.herokuapp.com', secure:true, port:443});
         peer.on('open', id => {
             $('#my-peer').append(id);
             document.getElementById("signup").style.display = "inline";
