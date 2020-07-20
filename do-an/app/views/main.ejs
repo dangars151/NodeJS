@@ -16,11 +16,14 @@
 <body>
     <div class="container">
         <%- include('./nav', {data: typeof(data) == 'undefined' ? {role: 'client'} : data}) %>
+    </div>
 
-        <%- include('./main-search.ejs', { jobs: jobs, works: works }) %>
+    <%- include('./main-search.ejs', { jobs: jobs, works: works }) %>
         
+    <div class="container">
         <%- include('./job.ejs', { jobs: jobs }) %>
     </div>
+
     <%- include('./footer.ejs') %>
 </body>
 <script src="public/js/notification.js"></script>

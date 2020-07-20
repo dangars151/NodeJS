@@ -1,7 +1,6 @@
 <div class="carousel slide" data-ride="carousel" data-interval="5000">
     <div class="carousel-item active">
-        <img src="public/images/slide1.jpg" class="d-block w-100">
-        <p class="introduce-website">Nền tảng tìm kiếm việc làm <b>hàng đầu</b></p>
+        <img src="public/images/slide1.jpg" class="d-block w-100" id="search-img">
     </div>
     <!-- <div class="carousel-item">
         <img src="public/images/slide2.jpg" class="d-block w-100">
@@ -11,24 +10,27 @@
         <img src="public/images/slide3.jpg" class="d-block w-100">
         <p style="width: 80%; top: 70px; " class="introduce-website">Hãy đến với Jobstart, sứ mệnh của chúng tôi là mang những ứng viên tiềm năng và những công ty lại với nhau</p>
     </div> -->
-    <div id="search">
-        <form id="search-normal" class="form-inline" action="find-job" method="POST">
-            <div class="form-group mb-2">
-                <input name="title" type="text" class="form-control-plaintext" placeholder="eg. Lập trình viên">
+    <div class="container" id="search-content">
+        <p class="introduce-website">Nền tảng tìm kiếm việc làm</p>
+        <div id="search">
+            <form id="search-normal" class="form-inline" action="find-job" method="POST">
+                <div class="form-group mb-2">
+                    <input name="title" type="text" class="form-control-plaintext" placeholder="eg. Lập trình viên">
+                </div>
+                <select name="name" class="form-control" style="border: 1px solid black; margin: 3px 10px 10px 0px;width: 220px;">
+                    <option value="">Ngành nghề</option>
+                    <% for(var i=0; i<works.length; i++) {%>
+                        <option value="<%= works[i]._id %>"><%= works[i].name %></option>
+                    <%}%>
+                </select>
+                <div class="form-group mb-2">
+                    <input name="location" type="text" class="form-control-plaintext" placeholder="Location">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Tìm việc ngay</button>
+            </form>
+            <div data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-search" style="padding-left: 20px;">Tìm kiếm nâng cao</i>
             </div>
-            <select name="name" class="form-control" style="border: 1px solid black; margin-top: -9px;">
-                <option value="">Ngành nghề</option>
-                <% for(var i=0; i<works.length; i++) {%>
-                    <option value="<%= works[i]._id %>"><%= works[i].name %></option>
-                <%}%>
-            </select>
-            <div class="form-group mb-2">
-                <input name="location" type="text" class="form-control-plaintext" placeholder="Location">
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Tìm việc ngay</button>
-        </form>
-        <div class="search-advance" data-toggle="modal" data-target="#exampleModal">
-            <i class="fas fa-search"></i>Tìm kiếm nâng cao
         </div>
     </div>
 

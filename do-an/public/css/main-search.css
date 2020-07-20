@@ -13,31 +13,47 @@
 #search-normal input {
     border: 1px solid black; 
     text-indent: 14px;
+    margin-right: 10px;
+    width: 220px;
 }
 
 #search {
     position:absolute; 
-    width: 70%; 
+    /* width: 70%;  */
     background: white; 
-    top: 250px; 
-    height: 100px;
+    top: 200px; 
 }
 
 .carousel-item img {
-    width: 1348px !important;
+    /* width: 1348px !important;
     margin-left: -119px;
-    height: 400px;
+    height: 400px; */
+    height: auto;
+    max-height: 456px;
 }
 
 #sign-in {
     display: none;
 }
 
-.search-advance {
+/* .search-advance {
     position: absolute;
     right: 20px;
-}
+} */
 
 .title {
     width: 111px;
+}
+
+@media only screen and (max-width: 635px) {
+    #search-img {
+        height: 600px;
+    }
+}
+
+@media only screen and (max-width: 705px) {
+    .introduce-website {
+        top: 0px;
+        width: 65%;
+    }
 }
